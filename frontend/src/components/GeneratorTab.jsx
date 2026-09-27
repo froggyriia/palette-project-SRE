@@ -102,19 +102,23 @@ export default function GeneratorTab({ token, onSaved }) {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-6">
-      <h2 className="text-xl font-semibold mb-6">Генератор палитры</h2>
+    <div className="w-full px-8 py-6">
+      <h2 className="text-xl font-semibold mb-4">Генератор палитры</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+      {/* Image column is a fixed, generous width so the apples are
+          genuinely large rather than shrinking to share a 50/50 split;
+          the controls column below is capped with max-w-2xl so it
+          doesn't stretch into empty space on a wide screen either. */}
+      <div className="grid grid-cols-1 md:grid-cols-[440px_1fr] gap-10 items-start">
         {/* Creative preview: the same photo, recolored via an SVG duotone
             filter to match whatever's currently picked — updates live as
             you drag the wheel, not just after generating. Hidden on small
             screens since there's no room for it next to the controls. */}
-        <div className="hidden md:block sticky top-6">
+        <div className="hidden md:block sticky top-6 max-w-[440px]">
           <PaletteMockup colors={mockupColors} />
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-6 max-w-2xl">
           <div className="flex flex-wrap items-start gap-8">
             <ColorWheel
               baseColor={baseColor}

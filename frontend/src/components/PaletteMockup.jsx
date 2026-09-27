@@ -47,7 +47,12 @@ export default function PaletteMockup({ colors }) {
   }, [colors]);
 
   return (
-    <div className="relative w-full h-full min-h-[320px]">
+    // aspect-[4/5]: a touch taller than wide, so the three overlapping
+    // apples cascading top-right -> bottom-left have somewhere to go
+    // without leaving dead space above/below them. The box always fills
+    // whatever width its grid column gives it — no fixed min-height that
+    // could end up mostly empty.
+    <div className="relative w-full aspect-[4/5]">
       {/* width/height 0: this SVG exists only to hold the filter
           definition that the <img> tags below reference via CSS. */}
       <svg width="0" height="0" aria-hidden="true">
@@ -63,10 +68,21 @@ export default function PaletteMockup({ colors }) {
         </defs>
       </svg>
 
+      {/* Main apple: dominates the composition, filling most of the box. */}
       <img
         src={appleImg}
         alt="Яблоко, перекрашенное в цвета текущей палитры"
-        className="absolute left-1/2 top-2 w-56 -translate-x-1/2 drop-shadow-lg select-none"
+        className="absolute right-0 top-0 w-[78%] drop-shadow-xl select-none"
+        style={{ filter: `url(#${filterId})` }}
+        draggable={false}
+      />
+      {/* Two smaller echoes cascade toward the bottom-left, overlapping
+          the main apple's corner rather than floating in empty space. */}
+      <img
+        src={appleImg}
+        alt=""
+        aria-hidden="true"
+        className="absolute left-0 bottom-[14%] w-[52%] -rotate-6 drop-shadow-lg select-none opacity-90"
         style={{ filter: `url(#${filterId})` }}
         draggable={false}
       />
@@ -74,15 +90,7 @@ export default function PaletteMockup({ colors }) {
         src={appleImg}
         alt=""
         aria-hidden="true"
-        className="absolute left-2 bottom-16 w-28 -rotate-6 drop-shadow select-none opacity-90"
-        style={{ filter: `url(#${filterId})` }}
-        draggable={false}
-      />
-      <img
-        src={appleImg}
-        alt=""
-        aria-hidden="true"
-        className="absolute left-24 bottom-0 w-16 rotate-3 drop-shadow select-none opacity-80"
+        className="absolute left-[6%] bottom-0 w-[32%] rotate-3 drop-shadow select-none opacity-80"
         style={{ filter: `url(#${filterId})` }}
         draggable={false}
       />
