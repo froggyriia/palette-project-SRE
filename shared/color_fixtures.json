@@ -1,0 +1,249 @@
+{
+  "_comment": "Generated from backend/app/color_theory.py (the tested, authoritative implementation). backend/tests/test_color_fixture_consistency.py checks this file still matches that module; frontend/scripts/check-color-fixtures.mjs checks utils/color.js matches it too. Regenerate with gen_color_fixtures.py whenever color_theory.py's math changes.",
+  "hex_to_hsl": [
+    {
+      "hex": "#ff0000",
+      "h": 0.0,
+      "s": 1.0,
+      "l": 0.5
+    },
+    {
+      "hex": "#00ff00",
+      "h": 120.0,
+      "s": 1.0,
+      "l": 0.5
+    },
+    {
+      "hex": "#0000ff",
+      "h": 240.0,
+      "s": 1.0,
+      "l": 0.5
+    },
+    {
+      "hex": "#ffffff",
+      "h": 0.0,
+      "s": 0.0,
+      "l": 1.0
+    },
+    {
+      "hex": "#000000",
+      "h": 0.0,
+      "s": 0.0,
+      "l": 0.0
+    },
+    {
+      "hex": "#3366cc",
+      "h": 220.0,
+      "s": 0.6000000000000001,
+      "l": 0.5
+    },
+    {
+      "hex": "#a1b2c3",
+      "h": 210.0,
+      "s": 0.22077922077922071,
+      "l": 0.6980392156862745
+    }
+  ],
+  "schemes": [
+    {
+      "base": "#ff0000",
+      "scheme": "complementary",
+      "angle": 30,
+      "expected": [
+        "#ff0000",
+        "#00ffff"
+      ]
+    },
+    {
+      "base": "#ff0000",
+      "scheme": "analogous",
+      "angle": 30,
+      "expected": [
+        "#ff0080",
+        "#ff0000",
+        "#ff8000"
+      ]
+    },
+    {
+      "base": "#ff0000",
+      "scheme": "triadic",
+      "angle": 30,
+      "expected": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ]
+    },
+    {
+      "base": "#ff0000",
+      "scheme": "tetradic",
+      "angle": 30,
+      "expected": [
+        "#ff0000",
+        "#80ff00",
+        "#00ffff",
+        "#8000ff"
+      ]
+    },
+    {
+      "base": "#ff0000",
+      "scheme": "analogous",
+      "angle": 45,
+      "expected": [
+        "#ff00bf",
+        "#ff0000",
+        "#ffbf00"
+      ]
+    },
+    {
+      "base": "#3366cc",
+      "scheme": "complementary",
+      "angle": 30,
+      "expected": [
+        "#3366cc",
+        "#cc9933"
+      ]
+    },
+    {
+      "base": "#3366cc",
+      "scheme": "analogous",
+      "angle": 30,
+      "expected": [
+        "#33b3cc",
+        "#3366cc",
+        "#4d33cc"
+      ]
+    },
+    {
+      "base": "#3366cc",
+      "scheme": "triadic",
+      "angle": 30,
+      "expected": [
+        "#3366cc",
+        "#cc3366",
+        "#66cc33"
+      ]
+    },
+    {
+      "base": "#3366cc",
+      "scheme": "tetradic",
+      "angle": 30,
+      "expected": [
+        "#3366cc",
+        "#cc33b2",
+        "#cc9933",
+        "#33cc4c"
+      ]
+    },
+    {
+      "base": "#3366cc",
+      "scheme": "analogous",
+      "angle": 45,
+      "expected": [
+        "#33ccbf",
+        "#3366cc",
+        "#7333cc"
+      ]
+    },
+    {
+      "base": "#a1b2c3",
+      "scheme": "complementary",
+      "angle": 30,
+      "expected": [
+        "#a1b2c3",
+        "#c3b2a1"
+      ]
+    },
+    {
+      "base": "#a1b2c3",
+      "scheme": "analogous",
+      "angle": 30,
+      "expected": [
+        "#a1c3c3",
+        "#a1b2c3",
+        "#a1a1c3"
+      ]
+    },
+    {
+      "base": "#a1b2c3",
+      "scheme": "triadic",
+      "angle": 30,
+      "expected": [
+        "#a1b2c3",
+        "#c3a1b2",
+        "#b2c3a1"
+      ]
+    },
+    {
+      "base": "#a1b2c3",
+      "scheme": "tetradic",
+      "angle": 30,
+      "expected": [
+        "#a1b2c3",
+        "#c3a1c3",
+        "#c3b2a1",
+        "#a1c3a1"
+      ]
+    },
+    {
+      "base": "#a1b2c3",
+      "scheme": "analogous",
+      "angle": 45,
+      "expected": [
+        "#a1c3bb",
+        "#a1b2c3",
+        "#aaa1c3"
+      ]
+    },
+    {
+      "base": "#123456",
+      "scheme": "complementary",
+      "angle": 30,
+      "expected": [
+        "#123456",
+        "#563412"
+      ]
+    },
+    {
+      "base": "#123456",
+      "scheme": "analogous",
+      "angle": 30,
+      "expected": [
+        "#125656",
+        "#123456",
+        "#121256"
+      ]
+    },
+    {
+      "base": "#123456",
+      "scheme": "triadic",
+      "angle": 30,
+      "expected": [
+        "#123456",
+        "#561234",
+        "#345612"
+      ]
+    },
+    {
+      "base": "#123456",
+      "scheme": "tetradic",
+      "angle": 30,
+      "expected": [
+        "#123456",
+        "#561256",
+        "#563412",
+        "#125612"
+      ]
+    },
+    {
+      "base": "#123456",
+      "scheme": "analogous",
+      "angle": 45,
+      "expected": [
+        "#125645",
+        "#123456",
+        "#231256"
+      ]
+    }
+  ]
+}

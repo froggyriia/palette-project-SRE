@@ -6,6 +6,7 @@ No FastAPI, no DB, no I/O — this module only takes and returns plain
 Python values, so it's testable in complete isolation (see Этап 3 tests).
 """
 
+import math
 import re
 
 _HEX_RE = re.compile(r"^#[0-9A-Fa-f]{6}$")
@@ -26,11 +27,21 @@ def hex_to_rgb(hex_color: str) -> tuple[int, int, int]:
     return r, g, b
 
 
+def _round_half_up(value: float) -> int:
+    """Round-half-up (186.5 -> 187), not Python's built-in round() which
+    uses round-half-to-even (banker's rounding: 186.5 -> 186). We need
+    this to match JS's Math.round, which the frontend's utils/color.js
+    uses for the same conversion (see shared/color_fixtures.json and its
+    two cross-check tests) — otherwise the two sides can silently
+    disagree on colors that land exactly on a .5 boundary."""
+    return math.floor(value + 0.5)
+
+
 def rgb_to_hex(r: int, g: int, b: int) -> str:
     """(161, 178, 195) -> '#a1b2c3'. Values are clamped to [0, 255]."""
-    r = max(0, min(255, round(r)))
-    g = max(0, min(255, round(g)))
-    b = max(0, min(255, round(b)))
+    r = max(0, min(255, _round_half_up(r)))
+    g = max(0, min(255, _round_half_up(g)))
+    b = max(0, min(255, _round_half_up(b)))
     return f"#{r:02x}{g:02x}{b:02x}"
 
 
