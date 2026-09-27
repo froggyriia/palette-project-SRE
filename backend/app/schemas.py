@@ -1,5 +1,6 @@
 import re
 from datetime import datetime
+from enum import Enum
 from typing import Optional
 
 from pydantic import BaseModel, ConfigDict, field_validator
@@ -81,3 +82,48 @@ class PaletteOut(PaletteBase):
     user_id: Optional[int]
     created_at: datetime
     colors: list[ColorOut] = []
+
+
+# --- Generate (Этап 4: theory module -> API) ---
+
+class SchemeType(str, Enum):
+    complementary = "complementary"
+    analogous = "analogous"
+    triadic = "triadic"
+    tetradic = "tetradic"
+
+
+class PaletteGenerateRequest(BaseModel):
+    base_color: str
+    scheme: SchemeType
+    name: Optional[str] = None
+    # Only used when scheme == analogous; how far the two neighbors sit
+    # from the base color, in degrees.
+    analogous_angle: float = 30
+
+    @field_validator("base_color")
+    @classmethod
+    def _base_color_format(cls, v: str) -> str:
+        return _validate_hex(v)
+
+
+# --- Contrast (Этап 4: contrast module -> API) ---
+
+class ColorPairContrast(BaseModel):
+    color_a: str
+    color_b: str
+    ratio: float
+    meets_aa_normal: bool
+    meets_aa_large: bool
+
+
+class BackgroundContrast(BaseModel):
+    color: str
+    against_white: float
+    against_black: float
+
+
+class PaletteContrastReport(BaseModel):
+    palette_id: int
+    pairs: list[ColorPairContrast]
+    backgrounds: list[BackgroundContrast]
