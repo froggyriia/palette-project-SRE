@@ -14,6 +14,14 @@ class Settings(BaseSettings):
     JWT_ALGORITHM: str = "HS256"
     JWT_EXPIRE_MINUTES: int = 60 * 24  # 1 day
     PORT: int = 8000
+    # Comma-separated list of origins the frontend is served from. The Vite
+    # dev server defaults to :5173; add the production frontend URL here
+    # via .env once it's deployed (Этап 7).
+    CORS_ORIGINS: str = "http://localhost:5173"
+
+    @property
+    def cors_origins_list(self) -> list[str]:
+        return [origin.strip() for origin in self.CORS_ORIGINS.split(",") if origin.strip()]
 
     class Config:
         env_file = ".env"
