@@ -7,6 +7,12 @@ import PaletteMockup from "./PaletteMockup.jsx";
 import Button from "./Button.jsx";
 import { schemeColors } from "../utils/color.js";
 
+// Shared look for every text/number/select field in this tab — one
+// definition instead of each input re-typing border/focus classes.
+const INPUT_CLASS =
+  "border border-gray-300 rounded-lg px-2.5 py-1.5 text-sm shadow-sm transition-colors " +
+  "focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500";
+
 const SCHEMES = [
   { value: "complementary", label: "Комплементарная" },
   { value: "analogous", label: "Аналоговая" },
@@ -103,9 +109,7 @@ export default function GeneratorTab({ token, onSaved }) {
   };
 
   return (
-    <div className="w-full px-8 py-6">
-      <h2 className="text-xl font-semibold mb-4">Генератор палитры</h2>
-
+    <div className="w-full px-8 py-8">
       {/* Image column is a fixed, generous width so the apples are
           genuinely large rather than shrinking to share a 50/50 split;
           the controls column below is capped with max-w-2xl so it
@@ -120,63 +124,67 @@ export default function GeneratorTab({ token, onSaved }) {
         </div>
 
         <div className="space-y-6 max-w-2xl">
-          <div className="flex flex-wrap items-start gap-8">
-            <ColorWheel
-              baseColor={baseColor}
-              scheme={scheme}
-              angle={Number(angle) || 30}
-              onBaseColorChange={setBaseColor}
-            />
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+            <div className="flex flex-wrap items-start gap-8">
+              <ColorWheel
+                baseColor={baseColor}
+                scheme={scheme}
+                angle={Number(angle) || 30}
+                onBaseColorChange={setBaseColor}
+              />
 
-            <div className="flex flex-col gap-4">
-              <label className="flex flex-col gap-1">
-                <span className="text-sm text-gray-600">Базовый цвет (hex)</span>
-                <input
-                  type="text"
-                  value={baseColor}
-                  onChange={(e) => setBaseColor(e.target.value)}
-                  className="border rounded px-2 py-1.5 w-32 font-mono text-sm"
-                />
-              </label>
-
-              <div className="flex flex-wrap items-end gap-4">
+              <div className="flex flex-col gap-4">
                 <label className="flex flex-col gap-1">
-                  <span className="text-sm text-gray-600">Схема</span>
-                  <select
-                    value={scheme}
-                    onChange={(e) => setScheme(e.target.value)}
-                    className="border rounded px-2 py-2"
-                  >
-                    {SCHEMES.map((s) => (
-                      <option key={s.value} value={s.value}>
-                        {s.label}
-                      </option>
-                    ))}
-                  </select>
+                  <span className="text-sm text-gray-600">Базовый цвет (hex)</span>
+                  <input
+                    type="text"
+                    value={baseColor}
+                    onChange={(e) => setBaseColor(e.target.value)}
+                    className={INPUT_CLASS + " w-32 font-mono"}
+                  />
                 </label>
 
-                {scheme === "analogous" && (
+                <div className="flex flex-wrap items-end gap-4">
                   <label className="flex flex-col gap-1">
-                    <span className="text-sm text-gray-600">Угол, °</span>
-                    <input
-                      type="number"
-                      value={angle}
-                      onChange={(e) => setAngle(e.target.value)}
-                      className="border rounded px-2 py-2 w-20"
-                      min={1}
-                      max={90}
-                    />
+                    <span className="text-sm text-gray-600">Схема</span>
+                    <select
+                      value={scheme}
+                      onChange={(e) => setScheme(e.target.value)}
+                      className={INPUT_CLASS}
+                    >
+                      {SCHEMES.map((s) => (
+                        <option key={s.value} value={s.value}>
+                          {s.label}
+                        </option>
+                      ))}
+                    </select>
                   </label>
-                )}
-              </div>
 
-              <Button onClick={generate} disabled={loading} size="lg" className="self-start">
-                {loading ? "Генерирую…" : "Сгенерировать"}
-              </Button>
+                  {scheme === "analogous" && (
+                    <label className="flex flex-col gap-1">
+                      <span className="text-sm text-gray-600">Угол, °</span>
+                      <input
+                        type="number"
+                        value={angle}
+                        onChange={(e) => setAngle(e.target.value)}
+                        className={INPUT_CLASS + " w-20"}
+                        min={1}
+                        max={90}
+                      />
+                    </label>
+                  )}
+                </div>
+
+                <Button onClick={generate} disabled={loading} size="lg" className="self-start">
+                  {loading ? "Генерирую…" : "Сгенерировать"}
+                </Button>
+              </div>
             </div>
           </div>
 
-          {error && <p className="text-red-600 text-sm">{error}</p>}
+          {error && (
+            <p className="text-red-700 text-sm bg-red-50 border border-red-200 rounded-lg px-3 py-2">{error}</p>
+          )}
 
           {palette && (
             <div className="space-y-4">
@@ -208,7 +216,7 @@ export default function GeneratorTab({ token, onSaved }) {
                     value={saveName}
                     onChange={(e) => setSaveName(e.target.value)}
                     placeholder="Название палитры"
-                    className="border rounded px-2 py-1.5 text-sm w-48"
+                    className={INPUT_CLASS + " w-48"}
                   />
                   <Button variant="success" size="sm" onClick={save} disabled={saving || !saveName.trim()}>
                     {saving ? "Сохраняю…" : "Сохранить в профиль"}

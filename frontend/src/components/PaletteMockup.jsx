@@ -68,8 +68,15 @@ export default function PaletteMockup({ colors }) {
       <img
         src={appleImg}
         alt="Яблоко, перекрашенное в цвета текущей палитры"
-        className="absolute inset-0 w-full h-full object-contain drop-shadow-2xl select-none"
-        style={{ filter: `url(#${filterId})` }}
+        // NB: the duotone filter above and the drop-shadow both set the
+        // same CSS `filter` property. They have to be one filter chain,
+        // not a Tailwind drop-shadow-* class plus this inline style —
+        // the inline style would just silently win and the class would
+        // do nothing (which is what was happening before). A big
+        // downward offset + soft blur is what reads as "floating above
+        // a surface" rather than a shadow hugging the shape.
+        className="absolute inset-0 w-full h-full object-contain select-none"
+        style={{ filter: `url(#${filterId}) drop-shadow(0 55px 45px rgba(0,0,0,0.45))` }}
         draggable={false}
       />
     </div>

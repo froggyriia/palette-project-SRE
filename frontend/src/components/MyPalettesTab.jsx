@@ -34,31 +34,39 @@ export default function MyPalettesTab({ token }) {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 space-y-4">
+    <div className="w-full px-8 py-8 space-y-6">
       <h2 className="text-xl font-semibold">Мои палитры</h2>
 
-      {error && <p className="text-red-600 text-sm">{error}</p>}
+      {error && (
+        <p className="text-red-700 text-sm bg-red-50 border border-red-200 rounded-lg px-3 py-2 max-w-md">{error}</p>
+      )}
       {palettes === null && !error && <p className="text-gray-500 text-sm">Загрузка…</p>}
       {palettes?.length === 0 && (
         <p className="text-gray-500 text-sm">Пока ничего не сохранено — сгенерируй палитру и нажми «Сохранить в профиль».</p>
       )}
 
-      <div className="space-y-4">
+      {/* Tiles instead of a stacked list: a grid that reflows from one
+          column on narrow screens up to three on wide ones, so browsing
+          several saved palettes is a glance rather than a scroll. */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
         {palettes?.map((p) => (
-          <div key={p.id} className="border rounded-lg p-4 space-y-3">
-            <div className="flex items-center justify-between">
-              <h3 className="font-medium">{p.name}</h3>
+          <div
+            key={p.id}
+            className="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200 p-5 flex flex-col items-center gap-4"
+          >
+            <div className="w-full flex items-center justify-between gap-2">
+              <h3 className="font-medium truncate">{p.name}</h3>
               <Button variant="danger" size="sm" onClick={() => remove(p.id)}>
                 Удалить
               </Button>
             </div>
-            <div className="flex flex-wrap items-start gap-6">
-              <ColorWheel colors={p.colors.map((c) => c.hex)} baseColor={p.base_color} />
-              <div className="flex flex-wrap gap-3 pt-2">
-                {p.colors.map((c) => (
-                  <ColorSwatch key={c.id} hex={c.hex} />
-                ))}
-              </div>
+
+            <ColorWheel colors={p.colors.map((c) => c.hex)} baseColor={p.base_color} />
+
+            <div className="flex flex-wrap justify-center gap-3">
+              {p.colors.map((c) => (
+                <ColorSwatch key={c.id} hex={c.hex} />
+              ))}
             </div>
           </div>
         ))}

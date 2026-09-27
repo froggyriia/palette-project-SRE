@@ -43,7 +43,7 @@ function HexLabel({ hex }) {
  */
 export default function ContrastReport({ contrast }) {
   return (
-    <div className="text-sm space-y-6 border rounded-lg p-4 bg-white">
+    <div className="text-sm space-y-6 border border-gray-200 rounded-2xl shadow-sm p-6 bg-white">
       <div>
         <h3 className="font-medium mb-1">Контраст между цветами палитры</h3>
         <p className="text-xs text-gray-500 mb-3">
