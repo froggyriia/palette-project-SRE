@@ -1,55 +1,71 @@
 import { useEffect, useState } from "react";
-import { api } from "../api";
-import ColorSwatch from "./ColorSwatch";
+import { api } from "../api.js";
+import ColorSwatch from "./ColorSwatch.jsx";
+import ColorWheel from "./ColorWheel.jsx";
 
 export default function MyPalettesTab({ token }) {
-  const [palettes, setPalettes] = useState([]);
+  const [palettes, setPalettes] = useState(null);
   const [error, setError] = useState(null);
 
-  async function load() {
+  const load = async () => {
+    setError(null);
     try {
-      const res = await api.get("/palettes");
-      setPalettes(res.data);
+      const list = await api.listPalettes(token);
+      setPalettes(list);
     } catch (e) {
-      setError(e?.response?.data?.detail ?? "Ошибка загрузки палитр");
+      setError(e.message);
     }
-  }
+  };
 
   useEffect(() => {
     load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
-  async function handleDelete(id) {
-    await api.delete(`/palettes/${id}`);
-    load();
-  }
-
-  if (!token) {
-    return <p className="text-gray-500">Войдите, чтобы увидеть сохранённые палитры.</p>;
-  }
+  const remove = async (id) => {
+    setError(null);
+    try {
+      await api.deletePalette(id, token);
+      setPalettes((prev) => prev.filter((p) => p.id !== id));
+    } catch (e) {
+      setError(e.message);
+    }
+  };
 
   return (
-    <div className="space-y-4">
-      {error && <p className="text-red-600">{error}</p>}
-      {palettes.length === 0 && <p className="text-gray-500">Пока нет сохранённых палитр.</p>}
-      {palettes.map((p) => (
-        <div key={p.id} className="border rounded p-3 flex justify-between items-center">
-          <div>
-            <p className="font-medium">{p.name ?? p.base_color}</p>
-            <div className="flex gap-1 mt-2">
-              {p.colors.map((c) => (
-                <ColorSwatch key={c.id} hex={c.hex} small />
-              ))}
+    <div className="max-w-2xl mx-auto p-6 space-y-4">
+      <h2 className="text-xl font-semibold">Мои палитры</h2>
+
+      {error && <p className="text-red-600 text-sm">{error}</p>}
+      {palettes === null && !error && <p className="text-gray-500 text-sm">Загрузка…</p>}
+      {palettes?.length === 0 && (
+        <p className="text-gray-500 text-sm">Пока ничего не сохранено — сгенерируй палитру и нажми «Сохранить в профиль».</p>
+      )}
+
+      <div className="space-y-4">
+        {palettes?.map((p) => (
+          <div key={p.id} className="border rounded-lg p-4 space-y-3">
+            <div className="flex items-center justify-between">
+              <h3 className="font-medium">{p.name}</h3>
+              <button
+                type="button"
+                onClick={() => remove(p.id)}
+                className="text-xs text-red-600 hover:underline"
+              >
+                Удалить
+              </button>
+            </div>
+            <div className="flex flex-wrap items-start gap-6">
+              <ColorWheel colors={p.colors.map((c) => c.hex)} baseColor={p.base_color} />
+              <div className="flex flex-wrap gap-3 pt-2">
+                {p.colors.map((c) => (
+                  <ColorSwatch key={c.id} hex={c.hex} />
+                ))}
+              </div>
             </div>
           </div>
-          <button
-            onClick={() => handleDelete(p.id)}
-            className="text-red-600 hover:underline text-sm"
-          >
-            Удалить
-          </button>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
