@@ -29,5 +29,19 @@ services:
       db:
         condition: service_healthy
 
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    environment:
+      # Where the *browser* should reach the backend — not the internal
+      # Docker network address, since fetch() runs client-side. For local
+      # docker-compose that's still localhost:8000 (published above); for
+      # a real deploy this becomes the backend's public URL.
+      VITE_API_URL: http://localhost:8000
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
 volumes:
   palette_db_data:

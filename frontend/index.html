@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Palette App</title>
+    <!--
+      Injected at container start (see docker-entrypoint.sh), not baked in
+      at build time. This is what lets one built image be released against
+      different backends (dev/staging/prod) without a rebuild (12-factor:
+      Build, release, run — the build artifact stays the same across
+      releases; only config changes). In local `npm run dev` this file
+      simply doesn't exist, so api.js falls back to VITE_API_URL / a
+      localhost default instead.
+    -->
+    <script src="/env-config.js" onerror="void 0"></script>
   </head>
   <body>
     <div id="root"></div>

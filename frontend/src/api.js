@@ -1,4 +1,16 @@
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+// Resolution order (12-factor: Config):
+// 1. window.__ENV__ — injected into the served index.html at container
+//    start from the deploy-time environment (see docker-entrypoint.sh).
+//    This is what makes the built frontend image config-agnostic: the
+//    same build artifact can point at a different backend per
+//    environment without rebuilding.
+// 2. import.meta.env.VITE_API_URL — set at build time; used for
+//    `npm run dev` / `npm run build` when there's no runtime injection.
+// 3. localhost fallback for local development.
+const API_URL =
+  (typeof window !== "undefined" && window.__ENV__?.VITE_API_URL) ||
+  import.meta.env.VITE_API_URL ||
+  "http://localhost:8000";
 
 export class ApiError extends Error {
   constructor(status, detail) {
