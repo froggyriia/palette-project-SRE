@@ -11,6 +11,8 @@ class Settings(BaseSettings):
     ENV: str = "development"
     DATABASE_URL: str = "postgresql://palette_user:palette_pass@db:5432/palette_db"
     JWT_SECRET: str = "change-me-in-production"
+    JWT_ALGORITHM: str = "HS256"
+    JWT_EXPIRE_MINUTES: int = 60 * 24  # 1 day
     PORT: int = 8000
 
     class Config:

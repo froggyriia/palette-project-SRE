@@ -1,8 +1,12 @@
+from typing import Optional
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from app.database import get_db
 from app import models, schemas
+from app.access import check_palette_access
+from app.database import get_db
+from app.deps import get_current_user_optional
 
 # Colors are created/listed in the context of a palette (nested resource),
 # but updated/deleted by their own id (flat resource) — that's the more
@@ -26,8 +30,14 @@ def _get_color_or_404(db: Session, color_id: int) -> models.Color:
 
 
 @palette_colors_router.post("", response_model=schemas.ColorOut, status_code=status.HTTP_201_CREATED)
-def add_color(palette_id: int, payload: schemas.ColorCreate, db: Session = Depends(get_db)):
-    _get_palette_or_404(db, palette_id)
+def add_color(
+    palette_id: int,
+    payload: schemas.ColorCreate,
+    db: Session = Depends(get_db),
+    current_user: Optional[models.User] = Depends(get_current_user_optional),
+):
+    palette = _get_palette_or_404(db, palette_id)
+    check_palette_access(palette, current_user)
     color = models.Color(palette_id=palette_id, hex=payload.hex, position=payload.position)
     db.add(color)
     db.commit()
@@ -36,8 +46,13 @@ def add_color(palette_id: int, payload: schemas.ColorCreate, db: Session = Depen
 
 
 @palette_colors_router.get("", response_model=list[schemas.ColorOut])
-def list_colors(palette_id: int, db: Session = Depends(get_db)):
-    _get_palette_or_404(db, palette_id)
+def list_colors(
+    palette_id: int,
+    db: Session = Depends(get_db),
+    current_user: Optional[models.User] = Depends(get_current_user_optional),
+):
+    palette = _get_palette_or_404(db, palette_id)
+    check_palette_access(palette, current_user)
     return (
         db.query(models.Color)
         .filter(models.Color.palette_id == palette_id)
@@ -47,8 +62,14 @@ def list_colors(palette_id: int, db: Session = Depends(get_db)):
 
 
 @colors_router.patch("/{color_id}", response_model=schemas.ColorOut)
-def update_color(color_id: int, payload: schemas.ColorUpdate, db: Session = Depends(get_db)):
+def update_color(
+    color_id: int,
+    payload: schemas.ColorUpdate,
+    db: Session = Depends(get_db),
+    current_user: Optional[models.User] = Depends(get_current_user_optional),
+):
     color = _get_color_or_404(db, color_id)
+    check_palette_access(color.palette, current_user)
     updates = payload.model_dump(exclude_unset=True)
     for field, value in updates.items():
         setattr(color, field, value)
@@ -58,7 +79,12 @@ def update_color(color_id: int, payload: schemas.ColorUpdate, db: Session = Depe
 
 
 @colors_router.delete("/{color_id}", status_code=status.HTTP_204_NO_CONTENT)
-def delete_color(color_id: int, db: Session = Depends(get_db)):
+def delete_color(
+    color_id: int,
+    db: Session = Depends(get_db),
+    current_user: Optional[models.User] = Depends(get_current_user_optional),
+):
     color = _get_color_or_404(db, color_id)
+    check_palette_access(color.palette, current_user)
     db.delete(color)
     db.commit()

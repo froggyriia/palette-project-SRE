@@ -3,7 +3,7 @@ from datetime import datetime
 from enum import Enum
 from typing import Optional
 
-from pydantic import BaseModel, ConfigDict, field_validator
+from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator
 
 HEX_RE = re.compile(r"^#[0-9A-Fa-f]{6}$")
 
@@ -127,3 +127,28 @@ class PaletteContrastReport(BaseModel):
     palette_id: int
     pairs: list[ColorPairContrast]
     backgrounds: list[BackgroundContrast]
+
+
+# --- Auth (Этап 5) ---
+
+class UserCreate(BaseModel):
+    email: EmailStr
+    password: str = Field(min_length=8, max_length=128)
+
+
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class UserOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    email: str
+    created_at: datetime
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
