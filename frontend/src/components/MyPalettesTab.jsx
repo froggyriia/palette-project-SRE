@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { api } from "../api.js";
 import ColorSwatch from "./ColorSwatch.jsx";
-import ColorWheel from "./ColorWheel.jsx";
 import PaletteMockup from "./PaletteMockup.jsx";
 import Button from "./Button.jsx";
 
@@ -62,14 +61,14 @@ export default function MyPalettesTab({ token }) {
               </Button>
             </div>
 
-            {/* Same duotone apple as the generator, alongside the wheel —
-                not instead of it — so a saved palette is recognizable at
-                a glance both ways, not just as an abstract color wheel. */}
-            <div className="w-full flex flex-wrap items-center justify-center gap-6">
-              <div className="w-28 shrink-0">
-                <PaletteMockup colors={p.colors.map((c) => c.hex)} compact />
-              </div>
-              <ColorWheel colors={p.colors.map((c) => c.hex)} baseColor={p.base_color} />
+            {/* Apple instead of the wheel — same duotone preview as the
+                generator page, sized to be the tile's focal point rather
+                than a small thumbnail next to it. */}
+            <div className="w-48">
+              {/* compact: the hero page's shadow offset/blur is tuned in
+                  px for a ~640px-wide apple — at this tile width it would
+                  look proportionally huge without it. */}
+              <PaletteMockup colors={p.colors.map((c) => c.hex)} compact />
             </div>
 
             <div className="flex flex-wrap justify-center gap-3">
