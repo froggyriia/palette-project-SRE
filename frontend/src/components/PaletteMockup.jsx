@@ -30,7 +30,7 @@ function luminance({ r, g, b }) {
  * This is pure CSS/SVG — no canvas, no per-pixel JS, so it costs nothing
  * to recompute live as the palette changes (dragging the color wheel).
  */
-export default function PaletteMockup({ colors }) {
+export default function PaletteMockup({ colors, compact = false }) {
   const filterId = useId();
 
   const { tableR, tableG, tableB } = useMemo(() => {
@@ -74,9 +74,17 @@ export default function PaletteMockup({ colors }) {
         // the inline style would just silently win and the class would
         // do nothing (which is what was happening before). A big
         // downward offset + soft blur is what reads as "floating above
-        // a surface" rather than a shadow hugging the shape.
+        // a surface" rather than a shadow hugging the shape. The offset
+        // is in px, so it doesn't scale down with the container on its
+        // own — `compact` gives small previews (e.g. a tile's thumbnail)
+        // a proportionally smaller shadow instead of one big enough to
+        // swallow a tiny apple.
         className="absolute inset-0 w-full h-full object-contain select-none"
-        style={{ filter: `url(#${filterId}) drop-shadow(0 55px 45px rgba(0,0,0,0.45))` }}
+        style={{
+          filter: compact
+            ? `url(#${filterId}) drop-shadow(0 10px 8px rgba(0,0,0,0.4))`
+            : `url(#${filterId}) drop-shadow(0 55px 45px rgba(0,0,0,0.45))`,
+        }}
         draggable={false}
       />
     </div>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../api.js";
 import ColorSwatch from "./ColorSwatch.jsx";
 import ColorWheel from "./ColorWheel.jsx";
+import PaletteMockup from "./PaletteMockup.jsx";
 import Button from "./Button.jsx";
 
 export default function MyPalettesTab({ token }) {
@@ -61,7 +62,15 @@ export default function MyPalettesTab({ token }) {
               </Button>
             </div>
 
-            <ColorWheel colors={p.colors.map((c) => c.hex)} baseColor={p.base_color} />
+            {/* Same duotone apple as the generator, alongside the wheel —
+                not instead of it — so a saved palette is recognizable at
+                a glance both ways, not just as an abstract color wheel. */}
+            <div className="w-full flex flex-wrap items-center justify-center gap-6">
+              <div className="w-28 shrink-0">
+                <PaletteMockup colors={p.colors.map((c) => c.hex)} compact />
+              </div>
+              <ColorWheel colors={p.colors.map((c) => c.hex)} baseColor={p.base_color} />
+            </div>
 
             <div className="flex flex-wrap justify-center gap-3">
               {p.colors.map((c) => (
