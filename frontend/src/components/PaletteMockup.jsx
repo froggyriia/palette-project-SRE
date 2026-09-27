@@ -47,14 +47,11 @@ export default function PaletteMockup({ colors }) {
   }, [colors]);
 
   return (
-    // aspect-[4/5]: a touch taller than wide, so the three overlapping
-    // apples cascading top-right -> bottom-left have somewhere to go
-    // without leaving dead space above/below them. The box always fills
-    // whatever width its grid column gives it — no fixed min-height that
-    // could end up mostly empty.
-    <div className="relative w-full aspect-[4/5]">
+    // Square box that always fills 100% of whatever width its grid column
+    // gives it — one huge apple, no smaller echoes competing for space.
+    <div className="relative w-full aspect-square">
       {/* width/height 0: this SVG exists only to hold the filter
-          definition that the <img> tags below reference via CSS. */}
+          definition that the <img> tag below references via CSS. */}
       <svg width="0" height="0" aria-hidden="true">
         <defs>
           <filter id={filterId} color-interpolation-filters="sRGB">
@@ -68,29 +65,10 @@ export default function PaletteMockup({ colors }) {
         </defs>
       </svg>
 
-      {/* Main apple: dominates the composition, filling most of the box. */}
       <img
         src={appleImg}
         alt="Яблоко, перекрашенное в цвета текущей палитры"
-        className="absolute right-0 top-0 w-[78%] drop-shadow-xl select-none"
-        style={{ filter: `url(#${filterId})` }}
-        draggable={false}
-      />
-      {/* Two smaller echoes cascade toward the bottom-left, overlapping
-          the main apple's corner rather than floating in empty space. */}
-      <img
-        src={appleImg}
-        alt=""
-        aria-hidden="true"
-        className="absolute left-0 bottom-[14%] w-[52%] -rotate-6 drop-shadow-lg select-none opacity-90"
-        style={{ filter: `url(#${filterId})` }}
-        draggable={false}
-      />
-      <img
-        src={appleImg}
-        alt=""
-        aria-hidden="true"
-        className="absolute left-[6%] bottom-0 w-[32%] rotate-3 drop-shadow select-none opacity-80"
+        className="absolute inset-0 w-full h-full object-contain drop-shadow-2xl select-none"
         style={{ filter: `url(#${filterId})` }}
         draggable={false}
       />

@@ -109,12 +109,12 @@ export default function GeneratorTab({ token, onSaved }) {
           genuinely large rather than shrinking to share a 50/50 split;
           the controls column below is capped with max-w-2xl so it
           doesn't stretch into empty space on a wide screen either. */}
-      <div className="grid grid-cols-1 md:grid-cols-[440px_1fr] gap-10 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-[minmax(0,640px)_1fr] gap-10 items-start">
         {/* Creative preview: the same photo, recolored via an SVG duotone
             filter to match whatever's currently picked — updates live as
             you drag the wheel, not just after generating. Hidden on small
             screens since there's no room for it next to the controls. */}
-        <div className="hidden md:block sticky top-6 max-w-[440px]">
+        <div className="hidden md:block sticky top-6">
           <PaletteMockup colors={mockupColors} />
         </div>
 
