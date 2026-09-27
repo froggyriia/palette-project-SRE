@@ -33,12 +33,16 @@ export default function GeneratorTab({ token, onSaved }) {
   const [savedMessage, setSavedMessage] = useState(null);
   const [exportText, setExportText] = useState(null);
 
-  // Same colors ColorWheel is already previewing live (before a palette
-  // even exists), or the actual generated palette's colors once there is
-  // one — either way, this is what PaletteMockup recolors the photo with.
+  // Exactly the same live computation ColorWheel itself uses (never the
+  // frozen palette.colors from the last "Сгенерировать" click) — so the
+  // apple keeps recoloring while you drag the wheel even after a palette
+  // has already been generated once. Using palette.colors here was the
+  // bug: it froze the apple's colors the moment a palette existed, since
+  // dragging the wheel only updates baseColor/scheme/angle, not palette,
+  // until you click "Сгенерировать" again.
   const mockupColors = useMemo(
-    () => (palette ? palette.colors.map((c) => c.hex) : schemeColors(baseColor, scheme, Number(angle) || 30)),
-    [palette, baseColor, scheme, angle],
+    () => schemeColors(baseColor, scheme, Number(angle) || 30),
+    [baseColor, scheme, angle],
   );
 
   const generate = async () => {
