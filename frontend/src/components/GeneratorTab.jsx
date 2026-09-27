@@ -38,21 +38,21 @@ export default function GeneratorTab({ token, onSaved }) {
       const p = await api.generatePalette(payload, null);
       setPalette(p);
       setSaveName(p.name);
+      // Contrast is checked right away, off the freshly generated palette's
+      // own id — not off `palette` state (which hasn't updated yet in this
+      // closure) — so there's no extra click needed before seeing it.
+      try {
+        const report = await api.getContrast(p.id, token);
+        setContrast(report);
+      } catch (e) {
+        // Don't let a contrast-check hiccup hide the palette that just
+        // generated successfully; just leave the report empty.
+        setError(e.message);
+      }
     } catch (e) {
       setError(e.message);
     } finally {
       setLoading(false);
-    }
-  };
-
-  const checkContrast = async () => {
-    if (!palette) return;
-    setError(null);
-    try {
-      const report = await api.getContrast(palette.id, token);
-      setContrast(report);
-    } catch (e) {
-      setError(e.message);
     }
   };
 
@@ -162,9 +162,6 @@ export default function GeneratorTab({ token, onSaved }) {
           </div>
 
           <div className="flex flex-wrap gap-2">
-            <button type="button" onClick={checkContrast} className="border rounded px-3 py-1.5 text-sm hover:bg-gray-50">
-              Проверить контраст
-            </button>
             <button type="button" onClick={() => doExport("json")} className="border rounded px-3 py-1.5 text-sm hover:bg-gray-50">
               Export JSON
             </button>
