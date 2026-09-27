@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { api } from "../api.js";
+import Button from "./Button.jsx";
 
 export default function AuthTab({ onLoggedIn }) {
   const [mode, setMode] = useState("login"); // "login" | "register"
@@ -27,18 +28,22 @@ export default function AuthTab({ onLoggedIn }) {
 
   return (
     <div className="max-w-sm mx-auto p-6">
-      <div className="flex gap-2 mb-4">
+      <div className="flex gap-1 mb-5 p-1 bg-gray-100 rounded-lg">
         <button
           type="button"
           onClick={() => setMode("login")}
-          className={`flex-1 py-2 rounded text-sm ${mode === "login" ? "bg-blue-600 text-white" : "bg-gray-100"}`}
+          className={`flex-1 py-1.5 rounded-md text-sm font-medium transition-all duration-150 ${
+            mode === "login" ? "bg-white text-blue-600 shadow-sm" : "text-gray-500 hover:text-gray-700"
+          }`}
         >
           Войти
         </button>
         <button
           type="button"
           onClick={() => setMode("register")}
-          className={`flex-1 py-2 rounded text-sm ${mode === "register" ? "bg-blue-600 text-white" : "bg-gray-100"}`}
+          className={`flex-1 py-1.5 rounded-md text-sm font-medium transition-all duration-150 ${
+            mode === "register" ? "bg-white text-blue-600 shadow-sm" : "text-gray-500 hover:text-gray-700"
+          }`}
         >
           Регистрация
         </button>
@@ -69,13 +74,9 @@ export default function AuthTab({ onLoggedIn }) {
 
         {error && <p className="text-red-600 text-sm">{error}</p>}
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 disabled:opacity-50"
-        >
+        <Button type="submit" disabled={loading} className="w-full">
           {loading ? "…" : mode === "login" ? "Войти" : "Зарегистрироваться и войти"}
-        </button>
+        </Button>
       </form>
     </div>
   );

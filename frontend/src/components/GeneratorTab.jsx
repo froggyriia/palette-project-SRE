@@ -4,6 +4,7 @@ import ColorSwatch from "./ColorSwatch.jsx";
 import ColorWheel from "./ColorWheel.jsx";
 import ContrastReport from "./ContrastReport.jsx";
 import PaletteMockup from "./PaletteMockup.jsx";
+import Button from "./Button.jsx";
 import { schemeColors } from "../utils/color.js";
 
 const SCHEMES = [
@@ -169,14 +170,9 @@ export default function GeneratorTab({ token, onSaved }) {
                 )}
               </div>
 
-              <button
-                onClick={generate}
-                disabled={loading}
-                type="button"
-                className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50 self-start"
-              >
+              <Button onClick={generate} disabled={loading} size="lg" className="self-start">
                 {loading ? "Генерирую…" : "Сгенерировать"}
-              </button>
+              </Button>
             </div>
           </div>
 
@@ -191,18 +187,18 @@ export default function GeneratorTab({ token, onSaved }) {
               </div>
 
               <div className="flex flex-wrap gap-2">
-                <button type="button" onClick={() => doExport("json")} className="border rounded px-3 py-1.5 text-sm hover:bg-gray-50">
+                <Button variant="secondary" size="sm" onClick={() => doExport("json")}>
                   Export JSON
-                </button>
-                <button type="button" onClick={() => doExport("css")} className="border rounded px-3 py-1.5 text-sm hover:bg-gray-50">
+                </Button>
+                <Button variant="secondary" size="sm" onClick={() => doExport("css")}>
                   Export CSS
-                </button>
-                <button type="button" onClick={() => doExport("scss")} className="border rounded px-3 py-1.5 text-sm hover:bg-gray-50">
+                </Button>
+                <Button variant="secondary" size="sm" onClick={() => doExport("scss")}>
                   Export SCSS
-                </button>
-                <button type="button" onClick={() => doExport("tailwind")} className="border rounded px-3 py-1.5 text-sm hover:bg-gray-50">
+                </Button>
+                <Button variant="secondary" size="sm" onClick={() => doExport("tailwind")}>
                   Export Tailwind
-                </button>
+                </Button>
               </div>
 
               {token ? (
@@ -214,14 +210,9 @@ export default function GeneratorTab({ token, onSaved }) {
                     placeholder="Название палитры"
                     className="border rounded px-2 py-1.5 text-sm w-48"
                   />
-                  <button
-                    type="button"
-                    onClick={save}
-                    disabled={saving || !saveName.trim()}
-                    className="border rounded px-3 py-1.5 text-sm bg-green-600 text-white hover:bg-green-700 disabled:opacity-50"
-                  >
+                  <Button variant="success" size="sm" onClick={save} disabled={saving || !saveName.trim()}>
                     {saving ? "Сохраняю…" : "Сохранить в профиль"}
-                  </button>
+                  </Button>
                   {savedMessage && <span className="text-green-700 text-sm">{savedMessage} ✓</span>}
                 </div>
               ) : (

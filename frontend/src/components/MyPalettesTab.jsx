@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../api.js";
 import ColorSwatch from "./ColorSwatch.jsx";
 import ColorWheel from "./ColorWheel.jsx";
+import Button from "./Button.jsx";
 
 export default function MyPalettesTab({ token }) {
   const [palettes, setPalettes] = useState(null);
@@ -47,13 +48,9 @@ export default function MyPalettesTab({ token }) {
           <div key={p.id} className="border rounded-lg p-4 space-y-3">
             <div className="flex items-center justify-between">
               <h3 className="font-medium">{p.name}</h3>
-              <button
-                type="button"
-                onClick={() => remove(p.id)}
-                className="text-xs text-red-600 hover:underline"
-              >
+              <Button variant="danger" size="sm" onClick={() => remove(p.id)}>
                 Удалить
-              </button>
+              </Button>
             </div>
             <div className="flex flex-wrap items-start gap-6">
               <ColorWheel colors={p.colors.map((c) => c.hex)} baseColor={p.base_color} />

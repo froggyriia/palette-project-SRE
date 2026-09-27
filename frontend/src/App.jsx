@@ -51,7 +51,7 @@ export default function App() {
           fighting them for vertical space. */}
       <aside className="w-56 shrink-0 border-r bg-white flex flex-col">
         <div className="px-4 py-5 border-b">
-          <h1 className="text-lg font-bold">🎨 Palette App</h1>
+          <h1 className="text-lg font-bold">Palette App</h1>
         </div>
         <nav className="flex flex-col gap-1 p-3">
           {tabs.map((t) => (
@@ -59,9 +59,9 @@ export default function App() {
               key={t.id}
               type="button"
               onClick={() => (t.id === "account" ? logout() : setTab(t.id))}
-              className={`text-left px-3 py-2 rounded text-sm ${
+              className={`text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-150 ${
                 tab === t.id && t.id !== "account"
-                  ? "bg-blue-600 text-white"
+                  ? "bg-blue-600 text-white shadow-sm"
                   : "text-gray-600 hover:bg-gray-100"
               }`}
               title={t.id === "account" ? "Нажми, чтобы выйти" : undefined}
