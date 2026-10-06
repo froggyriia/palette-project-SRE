@@ -6,6 +6,10 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app ./app
+# Alembic config and migrations: needed in the image so the Kubernetes
+# migration Job can run `alembic upgrade head` from the same image.
+COPY alembic.ini ./
+COPY migrations ./migrations
 
 EXPOSE 8000
 

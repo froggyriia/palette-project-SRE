@@ -1,0 +1,26 @@
+# Non-secret configuration (12-factor: Config) — injected into pods as env vars.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: palette-config
+data:
+  ENV: "production"
+  PORT: "8000"
+  # Origin the browser loads the frontend from (kubectl port-forward on localhost:5173).
+  CORS_ORIGINS: "http://localhost:5173"
+  # Address of the backend as seen from the *browser* (kubectl port-forward on localhost:8000).
+  VITE_API_URL: "http://localhost:8000"
+  POSTGRES_DB: "palette_db"
+---
+# Credentials. Demo values for the course project; for a real deployment
+# the Secret is created outside the repository.
+apiVersion: v1
+kind: Secret
+metadata:
+  name: palette-secret
+type: Opaque
+stringData:
+  POSTGRES_USER: "palette_user"
+  POSTGRES_PASSWORD: "palette_pass"
+  DATABASE_URL: "postgresql://palette_user:palette_pass@db:5432/palette_db"
+  JWT_SECRET: "k8s-demo-secret-change-me"

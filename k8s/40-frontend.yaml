@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels: {app: frontend}
+  template:
+    metadata:
+      labels: {app: frontend}
+    spec:
+      containers:
+        - name: frontend
+          image: palette-frontend:1.0
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+          env:
+            # Read by docker-entrypoint.sh, which writes env-config.js at container start.
+            - name: VITE_API_URL
+              valueFrom: {configMapKeyRef: {name: palette-config, key: VITE_API_URL}}
+          readinessProbe:
+            httpGet: {path: /, port: 80}
+            periodSeconds: 5
+          resources:
+            requests: {cpu: 20m, memory: 32Mi}
+            limits: {memory: 128Mi}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  selector: {app: frontend}
+  ports:
+    - port: 80
+      targetPort: 80

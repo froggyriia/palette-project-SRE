@@ -1,0 +1,19 @@
+# One-off admin process (12-factor: Admin processes): applies Alembic migrations
+# from the same backend image. Retries until the database accepts connections.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrate
+spec:
+  backoffLimit: 20
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: migrate
+          image: palette-backend:1.0
+          imagePullPolicy: Never
+          command: ["sh", "-c", "until alembic upgrade head; do echo 'db not ready, retrying'; sleep 3; done"]
+          envFrom:
+            - configMapRef: {name: palette-config}
+            - secretRef: {name: palette-secret}
