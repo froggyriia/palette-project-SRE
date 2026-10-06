@@ -1,10 +1,16 @@
 # Шпаргалка для скринкаста (5–7 минут)
 
 ```sh
-minikube start
-eval $(minikube docker-env)
+minikube status
+kubectl get nodes
+
+# сборка в локальном Docker и загрузка образов в minikube
 docker build -t palette-backend:1.0 ./backend
 docker build -t palette-frontend:1.0 ./frontend
+minikube image load palette-backend:1.0
+minikube image load palette-frontend:1.0
+minikube image ls | grep palette
+
 kubectl apply -f k8s/               # запуск приложения и зависимостей
 kubectl get pods -w                 # дождаться Running / Completed, затем Ctrl+C
 kubectl get all
