@@ -1,0 +1,15 @@
+# Helm values for the official `victoria-logs-single` chart.
+#   helm repo add vm https://victoriametrics.github.io/helm-charts/
+#   helm install vl vm/victoria-logs-single -f k8s/logging/values.yaml
+# Key names can differ between chart versions: check with
+#   helm show values vm/victoria-logs-single
+server:
+  retentionPeriod: 7d
+  persistentVolume:
+    enabled: true
+    size: 2Gi
+
+# Vector DaemonSet bundled with the chart: tails container logs on every node
+# (/var/log/pods) and ships them to Victoria Logs.
+vector:
+  enabled: true
