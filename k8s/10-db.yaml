@@ -22,6 +22,11 @@ spec:
   template:
     metadata:
       labels: {app: db}
+      annotations:
+        # Scrape the postgres-exporter sidecar (port 9187).
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9187"
+        prometheus.io/path: "/metrics"
     spec:
       containers:
         - name: postgres
@@ -45,6 +50,26 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /var/lib/postgresql/data
+        # Sidecar: reads PostgreSQL statistics over localhost (shared pod
+        # network) and exposes them in OpenMetrics format.
+        - name: postgres-exporter
+          image: quay.io/prometheuscommunity/postgres-exporter:v0.15.0
+          ports:
+            - name: metrics
+              containerPort: 9187
+          env:
+            - name: DATA_SOURCE_URI
+              value: "localhost:5432/palette_db?sslmode=disable"
+            - name: DATA_SOURCE_USER
+              valueFrom: {secretKeyRef: {name: palette-secret, key: POSTGRES_USER}}
+            - name: DATA_SOURCE_PASS
+              valueFrom: {secretKeyRef: {name: palette-secret, key: POSTGRES_PASSWORD}}
+          readinessProbe:
+            httpGet: {path: /metrics, port: 9187}
+            periodSeconds: 10
+          resources:
+            requests: {cpu: 10m, memory: 32Mi}
+            limits: {memory: 64Mi}
   volumeClaimTemplates:
     - metadata:
         name: data

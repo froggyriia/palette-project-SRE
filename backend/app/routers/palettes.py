@@ -9,6 +9,7 @@ from app.access import check_palette_access
 from app.contrast import WCAG_AA_LARGE_TEXT, WCAG_AA_NORMAL_TEXT, contrast_ratio
 from app.database import get_db
 from app.deps import get_current_user_optional
+from app.metrics import PALETTES_DELETED, PALETTES_EXPORTED, PALETTES_GENERATED, PALETTES_SAVED
 
 router = APIRouter(prefix="/palettes", tags=["palettes"])
 
@@ -18,6 +19,8 @@ _SCHEME_FUNCTIONS = {
     schemas.SchemeType.triadic: lambda base, angle: color_theory.triadic(base),
     schemas.SchemeType.tetradic: lambda base, angle: color_theory.tetradic(base),
 }
+
+_KNOWN_SCHEMES = {s.value for s in schemas.SchemeType}
 
 
 def _get_palette_or_404(db: Session, palette_id: int) -> models.Palette:
@@ -56,6 +59,12 @@ def create_palette(
     db.add(palette)
     db.commit()
     db.refresh(palette)
+    PALETTES_SAVED.labels(
+        # scheme_type is free text here: keep only known values so the label
+        # set stays bounded.
+        scheme=payload.scheme_type if payload.scheme_type in _KNOWN_SCHEMES else "custom",
+        owner="user" if current_user else "guest",
+    ).inc()
     return palette
 
 
@@ -80,6 +89,7 @@ def generate_palette(
     db.add(palette)
     db.commit()
     db.refresh(palette)
+    PALETTES_GENERATED.labels(scheme=payload.scheme.value).inc()
     return palette
 
 
@@ -132,6 +142,7 @@ def delete_palette(
     palette = _get_authorized_palette(db, palette_id, current_user)
     db.delete(palette)
     db.commit()
+    PALETTES_DELETED.inc()
 
 
 @router.get("/{palette_id}/contrast", response_model=schemas.PaletteContrastReport)
@@ -176,6 +187,7 @@ def export_palette(
 ):
     palette = _get_authorized_palette(db, palette_id, current_user)
     hexes = [c.hex for c in palette.colors]
+    PALETTES_EXPORTED.labels(format=format).inc()
 
     if format == "json":
         return {"name": palette.name, **export.to_json_colors(hexes)}

@@ -9,13 +9,22 @@ spec:
   template:
     metadata:
       labels: {app: backend}
+      annotations:
+        # Service discovery for VictoriaMetrics (job kubernetes-pods).
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9100"
+        prometheus.io/path: "/metrics"
     spec:
       containers:
         - name: backend
           image: palette-backend:1.0
           imagePullPolicy: Never   # image is loaded into minikube locally
           ports:
-            - containerPort: 8000
+            - name: http
+              containerPort: 8000
+            # /metrics on a separate port; not exposed by the Service.
+            - name: metrics
+              containerPort: 9100
           envFrom:
             - configMapRef: {name: palette-config}
             - secretRef: {name: palette-secret}

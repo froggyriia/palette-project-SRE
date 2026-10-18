@@ -10,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.database import engine
 from app.logging_config import setup_logging
+from app.metrics import setup_metrics, start_metrics_server
 from app.security import decode_access_token
 from app.routers.auth import router as auth_router
 from app.routers.palettes import router as palettes_router
@@ -23,6 +24,7 @@ logger = logging.getLogger("app")
 async def lifespan(app: FastAPI):
     # Startup: nothing heavy — the app should be ready to serve traffic
     # almost immediately (12-factor: Disposability — fast startup).
+    start_metrics_server()
     yield
     # Shutdown: release the DB connection pool cleanly instead of letting
     # the process die with connections half-open. This matters once the
@@ -33,6 +35,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="Palette App API", lifespan=lifespan)
+setup_metrics(app)
 
 app.add_middleware(
     CORSMiddleware,
