@@ -18,6 +18,9 @@ class Settings(BaseSettings):
     # dev server defaults to :5173; add the production frontend URL here
     # via .env once it's deployed (Этап 7).
     CORS_ORIGINS: str = "http://localhost:5173"
+    # Fault injection for SLO demos (see app/faults.py). Off by default.
+    FAULT_ERROR_RATE: float = 0.0   # share of API requests answered with 500
+    FAULT_DELAY_MS: int = 0         # extra latency added to every API request
 
     @property
     def cors_origins_list(self) -> list[str]:

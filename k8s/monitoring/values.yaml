@@ -7,6 +7,10 @@
 # annotated with prometheus.io/* (backend and db with postgres-exporter).
 server:
   retentionPeriod: 7d
+  extraArgs:
+    # Show fresh samples in queries after 5 s (default 30 s), so SLI graphs
+    # react quickly during demos.
+    search.latencyOffset: 5s
   persistentVolume:
     enabled: true
     size: 2Gi

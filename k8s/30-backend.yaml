@@ -28,6 +28,13 @@ spec:
           envFrom:
             - configMapRef: {name: palette-config}
             - secretRef: {name: palette-secret}
+          env:
+            # Fault injection for SLO demos (app/faults.py); 0 = off.
+            # Change with: kubectl set env deployment/backend FAULT_DELAY_MS=400
+            - name: FAULT_ERROR_RATE
+              value: "0"
+            - name: FAULT_DELAY_MS
+              value: "0"
           readinessProbe:
             httpGet: {path: /health, port: 8000}
             initialDelaySeconds: 3

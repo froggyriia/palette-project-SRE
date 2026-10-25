@@ -10,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.database import engine
 from app.logging_config import setup_logging
+from app.faults import fault_injection
 from app.metrics import setup_metrics, start_metrics_server
 from app.security import decode_access_token
 from app.routers.auth import router as auth_router
@@ -35,6 +36,9 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="Palette App API", lifespan=lifespan)
+# Registered before the instrumentator so that injected errors and delays
+# are measured by http_requests_total / http_request_duration_*.
+app.middleware("http")(fault_injection)
 setup_metrics(app)
 
 app.add_middleware(
