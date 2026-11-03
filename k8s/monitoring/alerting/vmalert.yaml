@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vmalert
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: vmalert}
+  template:
+    metadata:
+      labels: {app: vmalert}
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8880"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+        - name: vmalert
+          image: victoriametrics/vmalert:v1.102.1
+          args:
+            - -rule=/etc/vmalert/rules/*.yml
+            - -datasource.url=http://vmsingle-victoria-metrics-single-server.monitoring.svc:8428
+            - -notifier.url=http://alertmanager.monitoring.svc:9093
+            # store alert state (ALERTS, ALERTS_FOR_STATE) in VictoriaMetrics
+            # and restore it after a restart
+            - -remoteWrite.url=http://vmsingle-victoria-metrics-single-server.monitoring.svc:8428
+            - -remoteRead.url=http://vmsingle-victoria-metrics-single-server.monitoring.svc:8428
+            - -evaluationInterval=15s
+            - -external.url=http://localhost:8880
+          ports:
+            - name: http
+              containerPort: 8880
+          readinessProbe:
+            httpGet: {path: /health, port: 8880}
+            periodSeconds: 10
+          resources:
+            requests: {cpu: 20m, memory: 32Mi}
+            limits: {memory: 128Mi}
+          volumeMounts:
+            - name: rules
+              mountPath: /etc/vmalert/rules
+      volumes:
+        - name: rules
+          configMap:
+            name: vmalert-rules
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vmalert
+spec:
+  selector: {app: vmalert}
+  ports:
+    - port: 8880
+      targetPort: 8880

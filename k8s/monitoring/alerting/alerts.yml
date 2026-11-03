@@ -1,0 +1,75 @@
+groups:
+  # --- service: availability, scenario, dependencies, business -------------
+  - name: palette-service
+    interval: 15s
+    rules:
+      - alert: BackendDown
+        expr: sum(up{job="kubernetes-pods", app="backend"}) < 1 or absent(up{job="kubernetes-pods", app="backend"})
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Бэкенд недоступен"
+          description: "Ни один под backend не отвечает на /metrics больше 1 минуты."
+
+      - alert: HighErrorRate
+        expr: |
+          sum(rate(http_requests_total{app="backend", status=~"5.."}[2m]))
+            / sum(rate(http_requests_total{app="backend"}[2m])) > 0.05
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Доля ошибок 5xx выше 5%"
+          description: "Ошибок сервера {{ $value | humanizePercentage }} от всех запросов (SLO доступности 99%)."
+
+      - alert: ProberFailing
+        expr: max_over_time(prober_success[2m]) == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Сценарий генерации палитры не работает"
+          description: "Все проверки пробера за последние 2 минуты неуспешны."
+
+      - alert: PostgresDown
+        expr: pg_up{app="db"} == 0 or absent(pg_up{app="db"})
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "PostgreSQL недоступен"
+          description: "postgres-exporter не может подключиться к базе или под db отсутствует."
+
+      - alert: LoginFailuresSpike
+        expr: sum(rate(auth_login_total{result="failure"}[5m])) * 60 > 10
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Много неудачных попыток входа"
+          description: "{{ $value | printf \"%.0f\" }} неудачных входов в минуту: возможен подбор пароля."
+
+  # --- runtime / framework (prometheus_client, fastapi-instrumentator) ------
+  - name: palette-runtime
+    interval: 15s
+    rules:
+      - alert: HighLatencyP95
+        expr: |
+          histogram_quantile(0.95,
+            sum(rate(http_request_duration_highr_seconds_bucket{app="backend"}[2m])) by (le)) > 0.25
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "p95 времени ответа выше 250 мс"
+          description: "95-й перцентиль времени ответа {{ $value | humanizeDuration }} (порог SLO задержки 250 мс)."
+
+      - alert: HighMemoryUsage
+        expr: process_resident_memory_bytes{app="backend"} > 200 * 1024 * 1024
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Под {{ $labels.pod }} близок к лимиту памяти"
+          description: "RSS {{ $value | humanize1024 }}B при лимите контейнера 256 MiB."

@@ -1,0 +1,13 @@
+# Alerting stack: vmalert (evaluates rules against VictoriaMetrics) and
+# Alertmanager (groups alerts and sends them to Telegram).
+#   kubectl apply -k k8s/monitoring/alerting
+# Secrets with the Telegram bot token and chat id are created separately
+# (see alerting/Отчёт.md) and are not stored in the repository.
+namespace: monitoring
+resources:
+  - vmalert.yaml
+  - alertmanager.yaml
+configMapGenerator:
+  - name: vmalert-rules
+    files:
+      - alerts.yml
