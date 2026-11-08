@@ -14,9 +14,18 @@ receivers:
         chat_id: <TELEGRAM_CHAT_ID>
         send_resolved: true
         parse_mode: HTML
+        # Firing: what happened and when it started.
+        # Resolved: what recovered, how long the incident lasted, and the last
+        # value seen during the incident (vmalert sends the annotations as they
+        # were at the last evaluation before recovery, so it is labelled as such).
         message: |-
-          {{ if eq .Status "firing" }}<b>[FIRING]</b>{{ else }}<b>[RESOLVED]</b>{{ end }} {{ .CommonLabels.alertname }} ({{ .CommonLabels.severity }})
-          {{ range .Alerts }}
+          {{ range .Alerts }}{{ if eq .Status "firing" }}<b>[FIRING]</b> {{ .Labels.alertname }} ({{ .Labels.severity }})
           {{ .Annotations.summary }}
           {{ .Annotations.description }}
+          Начало: {{ .StartsAt.UTC.Format "02.01 15:04:05" }} UTC
+          {{ else }}<b>[RESOLVED]</b> {{ .Labels.alertname }} ({{ .Labels.severity }})
+          {{ with .Annotations.resolved }}{{ . }}{{ else }}Проблема устранена.{{ end }}
+          Длительность сбоя: {{ (.EndsAt.Sub .StartsAt).Round 1000000000 }} ({{ .StartsAt.UTC.Format "15:04:05" }} – {{ .EndsAt.UTC.Format "15:04:05" }} UTC)
+          Во время сбоя: {{ .Annotations.summary }}. {{ .Annotations.description }}
+          {{ end }}
           {{ end }}
