@@ -29,6 +29,7 @@ sidecar:
     labelValue: "1"
     searchNamespace: monitoring
 
+# Grafana 13 needs more than 256 MiB at startup (it was OOMKilled with that limit).
 resources:
-  requests: {cpu: 50m, memory: 128Mi}
-  limits: {memory: 256Mi}
+  requests: {cpu: 50m, memory: 256Mi}
+  limits: {memory: 768Mi}
