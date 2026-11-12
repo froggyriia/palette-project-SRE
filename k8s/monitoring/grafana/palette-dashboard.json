@@ -644,7 +644,8 @@
             "spanNulls": true,
             "thresholdsStyle": {
               "mode": "line"
-            }
+            },
+            "axisSoftMax": 0.1
           },
           "color": {
             "mode": "palette-classic"
@@ -1349,7 +1350,7 @@
             "type": "prometheus",
             "uid": "victoriametrics"
           },
-          "expr": "sum(rate(palette_saved_total[5m])) * 60",
+          "expr": "(sum(rate(palette_saved_total[5m])) or vector(0)) * 60",
           "legendFormat": "сохранения",
           "refId": "A",
           "range": true
@@ -1359,7 +1360,7 @@
             "type": "prometheus",
             "uid": "victoriametrics"
           },
-          "expr": "sum(rate(palette_exported_total[5m])) * 60",
+          "expr": "(sum(rate(palette_exported_total[5m])) or vector(0)) * 60",
           "legendFormat": "экспорт",
           "refId": "B",
           "range": true
@@ -1369,7 +1370,7 @@
             "type": "prometheus",
             "uid": "victoriametrics"
           },
-          "expr": "sum(rate(user_registered_total[5m])) * 60",
+          "expr": "(sum(rate(user_registered_total[5m])) or vector(0)) * 60",
           "legendFormat": "регистрации",
           "refId": "C",
           "range": true
