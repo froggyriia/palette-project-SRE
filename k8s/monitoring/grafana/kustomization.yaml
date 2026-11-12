@@ -1,0 +1,12 @@
+# App dashboard as a ConfigMap; the Grafana dashboards sidecar picks up
+# ConfigMaps labelled grafana_dashboard=1 and loads them automatically.
+#   kubectl apply -k k8s/monitoring/grafana
+namespace: monitoring
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    grafana_dashboard: "1"
+configMapGenerator:
+  - name: palette-dashboard
+    files:
+      - palette-dashboard.json
