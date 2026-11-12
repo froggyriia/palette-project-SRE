@@ -54,6 +54,9 @@ spec:
         # network) and exposes them in OpenMetrics format.
         - name: postgres-exporter
           image: quay.io/prometheuscommunity/postgres-exporter:v0.15.0
+          # The postmaster collector (pg_postmaster_start_time_seconds) is off
+          # by default; the Grafana PostgreSQL dashboard uses it for Start Time.
+          args: ["--collector.postmaster"]
           ports:
             - name: metrics
               containerPort: 9187
