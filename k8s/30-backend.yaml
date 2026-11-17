@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: palette-backend:1.0
+          image: palette-backend:1.1
           imagePullPolicy: Never   # image is loaded into minikube locally
           ports:
             - name: http
@@ -29,18 +29,25 @@ spec:
             - configMapRef: {name: palette-config}
             - secretRef: {name: palette-secret}
           env:
+            # Release version: GET /version, X-App-Version header, logs, palette_build_info.
+            - name: APP_VERSION
+              value: "1.1"
             # Fault injection for SLO demos (app/faults.py); 0 = off.
             # Change with: kubectl set env deployment/backend FAULT_DELAY_MS=400
             - name: FAULT_ERROR_RATE
               value: "0"
             - name: FAULT_DELAY_MS
               value: "0"
+          # Readiness checks the database (where all state lives): a pod
+          # without a database connection gets no traffic.
           readinessProbe:
-            httpGet: {path: /health, port: 8000}
+            httpGet: {path: /ready, port: 8000}
             initialDelaySeconds: 3
             periodSeconds: 5
+          # Liveness checks only the process, so a database outage does not
+          # make Kubernetes restart the backend pods.
           livenessProbe:
-            httpGet: {path: /health, port: 8000}
+            httpGet: {path: /live, port: 8000}
             initialDelaySeconds: 10
             periodSeconds: 10
           resources:

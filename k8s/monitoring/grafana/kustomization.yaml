@@ -10,3 +10,6 @@ configMapGenerator:
   - name: palette-dashboard
     files:
       - palette-dashboard.json
+  - name: deploy-strategies-dashboard
+    files:
+      - deploy-strategies-dashboard.json

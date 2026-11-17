@@ -6,7 +6,7 @@ Controlled by environment variables (12-factor: Config):
   FAULT_DELAY_MS    extra latency added to every API request, in ms
 
 Example: kubectl set env deployment/backend FAULT_DELAY_MS=400
-/health is never affected, so Kubernetes probes keep the pods alive.
+Probe endpoints (/health, /live, /ready) are never affected, so Kubernetes probes keep the pods alive.
 """
 
 import asyncio
@@ -17,7 +17,7 @@ from fastapi.responses import JSONResponse
 
 from app.config import settings
 
-EXCLUDED_PATHS = {"/health"}
+EXCLUDED_PATHS = {"/health", "/live", "/ready"}
 
 
 async def fault_injection(request: Request, call_next):

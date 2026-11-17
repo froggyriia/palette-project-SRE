@@ -14,6 +14,10 @@ class Settings(BaseSettings):
     JWT_ALGORITHM: str = "HS256"
     JWT_EXPIRE_MINUTES: int = 60 * 24  # 1 day
     PORT: int = 8000
+    # Release version, set by the deployment (e.g. v1.0.0 / v2.0.0). Returned
+    # by GET /version, in the X-App-Version header and in logs, so it is
+    # visible which version served a request during a rollout.
+    APP_VERSION: str = "dev"
     # Comma-separated list of origins the frontend is served from. The Vite
     # dev server defaults to :5173; add the production frontend URL here
     # via .env once it's deployed (Этап 7).

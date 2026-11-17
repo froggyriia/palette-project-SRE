@@ -14,8 +14,10 @@ not part of the public Service: only in-cluster scrapers reach it.
 import logging
 import os
 
-from prometheus_client import Counter, start_http_server
+from prometheus_client import Counter, Gauge, start_http_server
 from prometheus_fastapi_instrumentator import Instrumentator
+
+from app.config import settings
 
 logger = logging.getLogger("app.metrics")
 
@@ -53,11 +55,22 @@ REGISTRATIONS = Counter(
 )
 
 
+# Version of the running release: palette_build_info{app_version="v1.0.0"} 1.
+# The pod label `version` is also attached to every metric by the scrape
+# config (labelmap of pod labels); this gauge works without Kubernetes too.
+BUILD_INFO = Gauge(
+    "palette_build_info",
+    "Running release of the backend (always 1)",
+    ["app_version"],
+)
+
+
 def setup_metrics(app) -> None:
     """Attach HTTP instrumentation to the FastAPI app."""
+    BUILD_INFO.labels(app_version=settings.APP_VERSION).set(1)
     Instrumentator(
         should_group_status_codes=False,
-        excluded_handlers=["/health"],
+        excluded_handlers=["/health", "/live", "/ready"],
     ).instrument(app)
 
 

@@ -11,7 +11,7 @@ spec:
       restartPolicy: OnFailure
       containers:
         - name: migrate
-          image: palette-backend:1.0
+          image: palette-backend:1.1
           imagePullPolicy: Never
           command: ["sh", "-c", "until alembic upgrade head; do echo 'db not ready, retrying'; sleep 3; done"]
           envFrom:

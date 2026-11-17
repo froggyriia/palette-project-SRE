@@ -1,0 +1,66 @@
+# ROLLING UPDATE, step 2: the same Deployment with APP_VERSION v2.0.0.
+# Kubernetes replaces the pods one by one: starts a v2 pod (maxSurge 1),
+# waits until it is Ready, removes one v1 pod, and so on until all 4 pods
+# run v2. The Service and the HTTPRoute stay the same.
+# The readiness probe of v2 starts after 10 s, so that the replacement is
+# visible in `kubectl get pods` and in the traffic log.
+# Rollback: kubectl rollout undo deployment/backend -n deploy-demo
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: deploy-demo
+spec:
+  replicas: 4
+  # A new pod counts as available 5 s after it becomes Ready.
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1          # start one extra pod of the new version
+      maxUnavailable: 0    # remove an old pod only after a new one is Ready
+  selector:
+    matchLabels:
+      app: palette-backend
+  template:
+    metadata:
+      labels:
+        app: palette-backend
+        version: v2.0.0
+      annotations:
+        # Scraped by VictoriaMetrics (job kubernetes-pods); the pod labels
+        # app/version become labels of every metric.
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9100"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+        - name: backend
+          image: palette-backend:1.1
+          imagePullPolicy: Never   # built locally and loaded with `minikube image load`
+          ports:
+            - name: http
+              containerPort: 8000
+            - name: metrics
+              containerPort: 9100
+          envFrom:
+            - configMapRef: {name: palette-config}
+            - secretRef: {name: palette-secret}
+          env:
+            # The only difference between releases: returned by GET /version,
+            # in the X-App-Version header, in logs and in palette_build_info.
+            - name: APP_VERSION
+              value: v2.0.0
+          # Readiness: the pod gets traffic only when the database is reachable.
+          readinessProbe:
+            httpGet: {path: /ready, port: http}
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          # Liveness: the process answers HTTP (does not depend on the database).
+          livenessProbe:
+            httpGet: {path: /live, port: http}
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          resources:
+            requests: {cpu: 25m, memory: 64Mi}
+            limits: {memory: 256Mi}

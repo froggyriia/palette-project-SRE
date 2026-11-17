@@ -1,0 +1,31 @@
+# Namespace for the deployment strategies homework. Copies of the backend
+# (v1.0.0 / v2.0.0) run here next to the main application in `default` and
+# share its PostgreSQL database: all state (users, palettes) lives in the
+# database, so any pod of any version can serve any request.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: deploy-demo
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: palette-config
+  namespace: deploy-demo
+data:
+  ENV: "production"
+  PORT: "8000"
+  CORS_ORIGINS: "http://localhost:5173"
+---
+# Same demo credentials as k8s/00-config.yaml; the database is addressed by
+# its full in-cluster name because it lives in the `default` namespace.
+apiVersion: v1
+kind: Secret
+metadata:
+  name: palette-secret
+  namespace: deploy-demo
+type: Opaque
+stringData:
+  DATABASE_URL: "postgresql://palette_user:palette_pass@db.default.svc.cluster.local:5432/palette_db"
+  # Shared by all pods: a token issued by one pod is valid on every other pod.
+  JWT_SECRET: "k8s-demo-secret-change-me"
