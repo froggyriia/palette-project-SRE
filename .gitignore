@@ -11,3 +11,6 @@ dist/
 *.mp4
 *.zip
 *.mov
+
+# port-forward output of the deploy strategies scripts
+deploy-strategies/logs/.port-forward.log
