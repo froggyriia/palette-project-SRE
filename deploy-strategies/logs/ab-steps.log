@@ -1,0 +1,47 @@
+
+##### 2026-11-21 19:41:37 strategy: ab
+Cleaning up the previous strategy
+httproute.gateway.networking.k8s.io "backend" deleted from deploy-demo namespace
+deployment.apps "backend-v1" deleted from deploy-demo namespace
+deployment.apps "backend-v2" deleted from deploy-demo namespace
+service "backend-v1" deleted from deploy-demo namespace
+service "backend-v2" deleted from deploy-demo namespace
+pod/backend-v1-7f685b6f48-pn9xd condition met
+pod/backend-v1-7f685b6f48-sb7ct condition met
+pod/backend-v2-58cb66c4d8-jxcpf condition met
+pod/backend-v2-58cb66c4d8-vt449 condition met
+Reset done: Gateway eg and namespace deploy-demo are kept.
+
+=== 19:42:11 deploy A (v1.0.0) and B (v2.0.0), 2 replicas each
+$ kubectl apply -f /Users/vika/palette-project/k8s/deploy-strategies/app/backend-v1.yaml -f /Users/vika/palette-project/k8s/deploy-strategies/app/backend-v2.yaml
+service/backend-v1 created
+deployment.apps/backend-v1 created
+service/backend-v2 created
+deployment.apps/backend-v2 created
+$ kubectl rollout status deployment/backend-v1 -n deploy-demo --timeout=120s
+Waiting for deployment "backend-v1" rollout to finish: 0 of 2 updated replicas are available...
+Waiting for deployment "backend-v1" rollout to finish: 1 of 2 updated replicas are available...
+deployment "backend-v1" successfully rolled out
+$ kubectl rollout status deployment/backend-v2 -n deploy-demo --timeout=120s
+deployment "backend-v2" successfully rolled out
+$ kubectl get pods -n deploy-demo -l app=palette-backend -L version --sort-by=.metadata.creationTimestamp
+NAME                          READY   STATUS    RESTARTS   AGE   VERSION
+backend-v1-7f685b6f48-gffwx   1/1     Running   0          7s    v1.0.0
+backend-v1-7f685b6f48-hztpt   1/1     Running   0          7s    v1.0.0
+backend-v2-58cb66c4d8-8n6gv   1/1     Running   0          7s    v2.0.0
+backend-v2-58cb66c4d8-hq8h8   1/1     Running   0          7s    v2.0.0
+
+=== 19:42:21 A/B route: header x-user-group: beta -> v2.0.0, everyone else -> v1.0.0
+$ kubectl apply -f /Users/vika/palette-project/k8s/deploy-strategies/strategies/ab/httproute-ab.yaml
+httproute.gateway.networking.k8s.io/backend created
+HTTPRoute backend:
+  rule: if x-user-group=beta -> backend-v2 (weight 1)
+  rule: -> backend-v1 (weight 1)
+100 requests through the Gateway:
+    v1.0.0      100 of 100 (100%)
+100 requests through the Gateway with header 'x-user-group: beta':
+    v2.0.0      100 of 100 (100%)
+100 requests through the Gateway with header 'x-user-group: alpha':
+    v1.0.0      100 of 100 (100%)
+
+##### 19:42:35 done: ab. Log: /Users/vika/palette-project/deploy-strategies/logs/ab-steps.log

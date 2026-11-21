@@ -1,0 +1,60 @@
+
+##### 2026-11-21 19:39:05 strategy: canary
+Cleaning up the previous strategy
+httproute.gateway.networking.k8s.io "backend" deleted from deploy-demo namespace
+deployment.apps "backend-v1" deleted from deploy-demo namespace
+deployment.apps "backend-v2" deleted from deploy-demo namespace
+service "backend-v1" deleted from deploy-demo namespace
+service "backend-v2" deleted from deploy-demo namespace
+pod/backend-v1-7f685b6f48-fqmkh condition met
+pod/backend-v1-7f685b6f48-gvjml condition met
+pod/backend-v2-58cb66c4d8-7bsmz condition met
+pod/backend-v2-58cb66c4d8-njr4s condition met
+Reset done: Gateway eg and namespace deploy-demo are kept.
+
+=== 19:39:39 deploy stable (v1.0.0) and canary (v2.0.0), 2 replicas each
+$ kubectl apply -f /Users/vika/palette-project/k8s/deploy-strategies/app/backend-v1.yaml -f /Users/vika/palette-project/k8s/deploy-strategies/app/backend-v2.yaml
+service/backend-v1 created
+deployment.apps/backend-v1 created
+service/backend-v2 created
+deployment.apps/backend-v2 created
+$ kubectl rollout status deployment/backend-v1 -n deploy-demo --timeout=120s
+Waiting for deployment "backend-v1" rollout to finish: 0 of 2 updated replicas are available...
+Waiting for deployment "backend-v1" rollout to finish: 1 of 2 updated replicas are available...
+deployment "backend-v1" successfully rolled out
+$ kubectl rollout status deployment/backend-v2 -n deploy-demo --timeout=120s
+deployment "backend-v2" successfully rolled out
+$ kubectl get pods -n deploy-demo -l app=palette-backend -L version --sort-by=.metadata.creationTimestamp
+NAME                          READY   STATUS    RESTARTS   AGE   VERSION
+backend-v1-7f685b6f48-pn9xd   1/1     Running   0          6s    v1.0.0
+backend-v1-7f685b6f48-sb7ct   1/1     Running   0          6s    v1.0.0
+backend-v2-58cb66c4d8-jxcpf   1/1     Running   0          6s    v2.0.0
+backend-v2-58cb66c4d8-vt449   1/1     Running   0          6s    v2.0.0
+
+=== 19:39:49 canary weights v1/v2 = 90/10
+$ kubectl apply -f /Users/vika/palette-project/k8s/deploy-strategies/strategies/canary/httproute-90-10.yaml
+httproute.gateway.networking.k8s.io/backend created
+HTTPRoute backend:
+  rule: -> backend-v1 (weight 90) backend-v2 (weight 10)
+100 requests through the Gateway:
+    v1.0.0       89 of 100 (89%)
+    v2.0.0       11 of 100 (11%)
+
+=== 19:39:58 canary weights v1/v2 = 50/50
+$ kubectl apply -f /Users/vika/palette-project/k8s/deploy-strategies/strategies/canary/httproute-50-50.yaml
+httproute.gateway.networking.k8s.io/backend configured
+HTTPRoute backend:
+  rule: -> backend-v1 (weight 50) backend-v2 (weight 50)
+100 requests through the Gateway:
+    v1.0.0       50 of 100 (50%)
+    v2.0.0       50 of 100 (50%)
+
+=== 19:40:05 canary weights v1/v2 = 0/100
+$ kubectl apply -f /Users/vika/palette-project/k8s/deploy-strategies/strategies/canary/httproute-0-100.yaml
+httproute.gateway.networking.k8s.io/backend configured
+HTTPRoute backend:
+  rule: -> backend-v1 (weight 0) backend-v2 (weight 100)
+100 requests through the Gateway:
+    v2.0.0      100 of 100 (100%)
+
+##### 19:40:10 done: canary. Log: /Users/vika/palette-project/deploy-strategies/logs/canary-steps.log

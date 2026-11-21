@@ -1,0 +1,302 @@
+# 2026-11-21 19:55:32 requests in the logs of the backend pods (namespace deploy-demo)
+# 2026-11-21 19:55:43 requests in the logs of the backend pods (namespace deploy-demo)
+19:55:47 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:47 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:47 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:47 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:47 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:47 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:47 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:47 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:48 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:48 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:48 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:48 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:48 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:48 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:48 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:48 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:49 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:49 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:49 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:49 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:49 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:49 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:49 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:49 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:50 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:51 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:51 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:52 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:52 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:52 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:52 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:52 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:52 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:52 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:52 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:53 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:53 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:53 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:53 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:53 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:53 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:53 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:53 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:53 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:53 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:54 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:54 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:54 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:54 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:54 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:54 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:54 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:54 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:55 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:55 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:55 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:55 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:55 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:55 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:55 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:55 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:56 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:56 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:56 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:56 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:56 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:56 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:56 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:56 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:57 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:57 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:57 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:57 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:57 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:57 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:57 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200
+19:55:57 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:57 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:57 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:58 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:58 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:58 | v2.0.0 | backend-v2-58cb66c4d8-6f74v  | GET /version 200  <- mirror copy
+19:55:58 | v1.0.0 | backend-v1-7f685b6f48-mgvc2  | GET /version 200
+19:55:58 | v2.0.0 | backend-v2-58cb66c4d8-gh6bs  | GET /version 200  <- mirror copy
+19:55:58 | v1.0.0 | backend-v1-7f685b6f48-s2k8p  | GET /version 200

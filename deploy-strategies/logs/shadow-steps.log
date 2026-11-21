@@ -1,0 +1,86 @@
+
+##### 2026-11-21 19:50:00 strategy: shadow
+Cleaning up the previous strategy
+httproute.gateway.networking.k8s.io "backend" deleted from deploy-demo namespace
+deployment.apps "backend-v1" deleted from deploy-demo namespace
+deployment.apps "backend-v2" deleted from deploy-demo namespace
+service "backend-v1" deleted from deploy-demo namespace
+service "backend-v2" deleted from deploy-demo namespace
+
+##### 2026-11-21 19:53:28 strategy: shadow
+Cleaning up the previous strategy
+No resources found
+Reset done: Gateway eg and namespace deploy-demo are kept.
+
+=== 19:53:36 deploy v1.0.0 (serves users) and v2.0.0 (shadow), 2 replicas each
+$ kubectl apply -f /Users/vika/palette-project/k8s/deploy-strategies/app/backend-v1.yaml -f /Users/vika/palette-project/k8s/deploy-strategies/app/backend-v2.yaml
+service/backend-v1 created
+deployment.apps/backend-v1 created
+service/backend-v2 created
+deployment.apps/backend-v2 created
+$ kubectl rollout status deployment/backend-v1 -n deploy-demo --timeout=120s
+Waiting for deployment "backend-v1" rollout to finish: 0 of 2 updated replicas are available...
+Waiting for deployment "backend-v1" rollout to finish: 1 of 2 updated replicas are available...
+deployment "backend-v1" successfully rolled out
+$ kubectl rollout status deployment/backend-v2 -n deploy-demo --timeout=120s
+deployment "backend-v2" successfully rolled out
+$ kubectl get pods -n deploy-demo -l app=palette-backend -L version --sort-by=.metadata.creationTimestamp
+NAME                          READY   STATUS    RESTARTS   AGE   VERSION
+backend-v1-7f685b6f48-gw67r   1/1     Running   0          6s    v1.0.0
+backend-v1-7f685b6f48-kftkz   1/1     Running   0          6s    v1.0.0
+backend-v2-58cb66c4d8-cx46p   1/1     Running   0          6s    v2.0.0
+backend-v2-58cb66c4d8-zwxf4   1/1     Running   0          6s    v2.0.0
+
+##### 2026-11-21 19:54:09 strategy: shadow
+Cleaning up the previous strategy
+No resources found
+deployment.apps "backend-v1" deleted from deploy-demo namespace
+deployment.apps "backend-v2" deleted from deploy-demo namespace
+service "backend-v1" deleted from deploy-demo namespace
+service "backend-v2" deleted from deploy-demo namespace
+pod/backend-v1-7f685b6f48-gw67r condition met
+pod/backend-v1-7f685b6f48-kftkz condition met
+pod/backend-v2-58cb66c4d8-cx46p condition met
+pod/backend-v2-58cb66c4d8-zwxf4 condition met
+Reset done: Gateway eg and namespace deploy-demo are kept.
+
+##### 2026-11-21 19:55:28 strategy: shadow
+Cleaning up the previous strategy
+No resources found
+Reset done: Gateway eg and namespace deploy-demo are kept.
+
+=== 19:55:33 deploy v1.0.0 (serves users) and v2.0.0 (shadow), 2 replicas each
+$ kubectl apply -f /Users/vika/palette-project/k8s/deploy-strategies/app/backend-v1.yaml -f /Users/vika/palette-project/k8s/deploy-strategies/app/backend-v2.yaml
+service/backend-v1 created
+deployment.apps/backend-v1 created
+service/backend-v2 created
+deployment.apps/backend-v2 created
+$ kubectl rollout status deployment/backend-v1 -n deploy-demo --timeout=120s
+Waiting for deployment "backend-v1" rollout to finish: 0 of 2 updated replicas are available...
+Waiting for deployment "backend-v1" rollout to finish: 1 of 2 updated replicas are available...
+deployment "backend-v1" successfully rolled out
+$ kubectl rollout status deployment/backend-v2 -n deploy-demo --timeout=120s
+deployment "backend-v2" successfully rolled out
+$ kubectl get pods -n deploy-demo -l app=palette-backend -L version --sort-by=.metadata.creationTimestamp
+NAME                          READY   STATUS    RESTARTS   AGE   VERSION
+backend-v1-7f685b6f48-mgvc2   1/1     Running   0          7s    v1.0.0
+backend-v1-7f685b6f48-s2k8p   1/1     Running   0          7s    v1.0.0
+backend-v2-58cb66c4d8-6f74v   1/1     Running   0          7s    v2.0.0
+backend-v2-58cb66c4d8-gh6bs   1/1     Running   0          7s    v2.0.0
+
+=== 19:55:46 shadow route: users -> v1.0.0, copy of every request -> v2.0.0
+$ kubectl apply -f /Users/vika/palette-project/k8s/deploy-strategies/strategies/shadow/httproute-shadow.yaml
+httproute.gateway.networking.k8s.io/backend created
+HTTPRoute backend:
+  rule: -> backend-v1 (weight 1) + mirror to backend-v2
+100 requests through the Gateway:
+    v1.0.0      100 of 100 (100%)
+v2.0.0 logged 120 requests to /version in the last 30 s (mirrored copies)
+Last mirrored requests in the logs of v2.0.0:
+[pod/backend-v2-58cb66c4d8-gh6bs/backend] {"timestamp": "2026-11-21T18:55:51.532909+00:00", "level": "info", "message": "request completed", "service.name": "palette-backend", "logger": "app", "request_id": "61356169-b9ac-44ba-b305-5e42da7a32e7", "method": "GET", "path": "/version", "status": 200, "duration_ms": 0.7, "user_id": null, "version": "v2.0.0"}
+[pod/backend-v2-58cb66c4d8-gh6bs/backend] {"timestamp": "2026-11-21T18:55:51.582432+00:00", "level": "info", "message": "request completed", "service.name": "palette-backend", "logger": "app", "request_id": "084bc674-ea8c-45c3-b3ef-8a16a9366dd2", "method": "GET", "path": "/version", "status": 200, "duration_ms": 0.59, "user_id": null, "version": "v2.0.0"}
+[pod/backend-v2-58cb66c4d8-gh6bs/backend] {"timestamp": "2026-11-21T18:55:51.616718+00:00", "level": "info", "message": "request completed", "service.name": "palette-backend", "logger": "app", "request_id": "23656b77-4b22-4995-ad06-561e91df88c4", "method": "GET", "path": "/version", "status": 200, "duration_ms": 0.54, "user_id": null, "version": "v2.0.0"}
+[pod/backend-v2-58cb66c4d8-gh6bs/backend] {"timestamp": "2026-11-21T18:55:51.632964+00:00", "level": "info", "message": "request completed", "service.name": "palette-backend", "logger": "app", "request_id": "08609ba0-a29b-4041-ab56-c0ac5d9f6325", "method": "GET", "path": "/version", "status": 200, "duration_ms": 0.49, "user_id": null, "version": "v2.0.0"}
+[pod/backend-v2-58cb66c4d8-gh6bs/backend] {"timestamp": "2026-11-21T18:55:51.648913+00:00", "level": "info", "message": "request completed", "service.name": "palette-backend", "logger": "app", "request_id": "bfe54f1a-e2fc-493c-98e1-b51d74a794d4", "method": "GET", "path": "/version", "status": 200, "duration_ms": 0.5, "user_id": null, "version": "v2.0.0"}
+
+##### 19:55:51 done: shadow. Log: /Users/vika/palette-project/deploy-strategies/logs/shadow-steps.log

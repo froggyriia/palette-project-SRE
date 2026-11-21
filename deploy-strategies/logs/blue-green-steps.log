@@ -1,0 +1,56 @@
+
+##### 2026-11-21 19:36:31 strategy: blue-green
+Cleaning up the previous strategy
+httproute.gateway.networking.k8s.io "backend" deleted from deploy-demo namespace
+deployment.apps "backend" deleted from deploy-demo namespace
+service "backend" deleted from deploy-demo namespace
+pod/backend-7f685b6f48-24j2w condition met
+pod/backend-7f685b6f48-45vgw condition met
+pod/backend-7f685b6f48-dwgf9 condition met
+pod/backend-7f685b6f48-xj9lm condition met
+Reset done: Gateway eg and namespace deploy-demo are kept.
+
+=== 19:37:04 deploy green (v1.0.0) and blue (v2.0.0), 2 replicas each
+$ kubectl apply -f /Users/vika/palette-project/k8s/deploy-strategies/app/backend-v1.yaml -f /Users/vika/palette-project/k8s/deploy-strategies/app/backend-v2.yaml
+service/backend-v1 created
+deployment.apps/backend-v1 created
+service/backend-v2 created
+deployment.apps/backend-v2 created
+$ kubectl rollout status deployment/backend-v1 -n deploy-demo --timeout=120s
+Waiting for deployment "backend-v1" rollout to finish: 0 of 2 updated replicas are available...
+Waiting for deployment "backend-v1" rollout to finish: 1 of 2 updated replicas are available...
+deployment "backend-v1" successfully rolled out
+$ kubectl rollout status deployment/backend-v2 -n deploy-demo --timeout=120s
+deployment "backend-v2" successfully rolled out
+$ kubectl get pods -n deploy-demo -l app=palette-backend -L version --sort-by=.metadata.creationTimestamp
+NAME                          READY   STATUS    RESTARTS   AGE   VERSION
+backend-v1-7f685b6f48-fqmkh   1/1     Running   0          6s    v1.0.0
+backend-v1-7f685b6f48-gvjml   1/1     Running   0          6s    v1.0.0
+backend-v2-58cb66c4d8-7bsmz   1/1     Running   0          6s    v2.0.0
+backend-v2-58cb66c4d8-njr4s   1/1     Running   0          6s    v2.0.0
+
+=== 19:37:17 route 100% to green (v1.0.0)
+$ kubectl apply -f /Users/vika/palette-project/k8s/deploy-strategies/strategies/blue-green/httproute-green.yaml
+httproute.gateway.networking.k8s.io/backend created
+HTTPRoute backend:
+  rule: -> backend-v1 (weight 1)
+100 requests through the Gateway:
+    v1.0.0      100 of 100 (100%)
+
+=== 19:37:26 switch 100% to blue (v2.0.0)
+$ kubectl apply -f /Users/vika/palette-project/k8s/deploy-strategies/strategies/blue-green/httproute-blue.yaml
+httproute.gateway.networking.k8s.io/backend configured
+HTTPRoute backend:
+  rule: -> backend-v2 (weight 1)
+100 requests through the Gateway:
+    v2.0.0      100 of 100 (100%)
+
+=== 19:37:35 rollback: switch 100% back to green (v1.0.0)
+$ kubectl apply -f /Users/vika/palette-project/k8s/deploy-strategies/strategies/blue-green/httproute-green.yaml
+httproute.gateway.networking.k8s.io/backend configured
+HTTPRoute backend:
+  rule: -> backend-v1 (weight 1)
+100 requests through the Gateway:
+    v1.0.0      100 of 100 (100%)
+
+##### 19:37:40 done: blue-green. Log: /Users/vika/palette-project/deploy-strategies/logs/blue-green-steps.log
