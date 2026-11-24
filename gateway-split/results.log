@@ -1,0 +1,618 @@
+# 2026-11-24 15:58:26 200 requests to http://localhost:8889/version (Gateway palette-gateway, HTTPRoute palette-split)
+# weights: backend-v1=90 backend-v2=10
+  1 v1.0.0 backend-v1-7f685b6f48-lfsrr
+  2 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+  3 v1.0.0 backend-v1-7f685b6f48-8k8kd
+  4 v1.0.0 backend-v1-7f685b6f48-lfsrr
+  5 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+  6 v1.0.0 backend-v1-7f685b6f48-8k8kd
+  7 v1.0.0 backend-v1-7f685b6f48-8k8kd
+  8 v1.0.0 backend-v1-7f685b6f48-8k8kd
+  9 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 10 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 11 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 12 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 13 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 14 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 15 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 16 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 17 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 18 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 19 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 20 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 21 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 22 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 23 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 24 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 25 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 26 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 27 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 28 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 29 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 30 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 31 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 32 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 33 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+ 34 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 35 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 36 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 37 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 38 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 39 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 40 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 41 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 42 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 43 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 44 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 45 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 46 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 47 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 48 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 49 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 50 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 51 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 52 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 53 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 54 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 55 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+ 56 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 57 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 58 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 59 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 60 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 61 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 62 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 63 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 64 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 65 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 66 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 67 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 68 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 69 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 70 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 71 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 72 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 73 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 74 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 75 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 76 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 77 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 78 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 79 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 80 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 81 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 82 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 83 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 84 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 85 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 86 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 87 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 88 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 89 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 90 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 91 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 92 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 93 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 94 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 95 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 96 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 97 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 98 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 99 v1.0.0 backend-v1-7f685b6f48-lfsrr
+100 v1.0.0 backend-v1-7f685b6f48-lfsrr
+101 v1.0.0 backend-v1-7f685b6f48-lfsrr
+102 v1.0.0 backend-v1-7f685b6f48-lfsrr
+103 v1.0.0 backend-v1-7f685b6f48-8k8kd
+104 v1.0.0 backend-v1-7f685b6f48-lfsrr
+105 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+106 v1.0.0 backend-v1-7f685b6f48-lfsrr
+107 v1.0.0 backend-v1-7f685b6f48-8k8kd
+108 v1.0.0 backend-v1-7f685b6f48-8k8kd
+109 v1.0.0 backend-v1-7f685b6f48-8k8kd
+110 v1.0.0 backend-v1-7f685b6f48-8k8kd
+111 v1.0.0 backend-v1-7f685b6f48-8k8kd
+112 v1.0.0 backend-v1-7f685b6f48-lfsrr
+113 v1.0.0 backend-v1-7f685b6f48-lfsrr
+114 v1.0.0 backend-v1-7f685b6f48-8k8kd
+115 v1.0.0 backend-v1-7f685b6f48-8k8kd
+116 v1.0.0 backend-v1-7f685b6f48-lfsrr
+117 v1.0.0 backend-v1-7f685b6f48-8k8kd
+118 v1.0.0 backend-v1-7f685b6f48-lfsrr
+119 v1.0.0 backend-v1-7f685b6f48-8k8kd
+120 v1.0.0 backend-v1-7f685b6f48-8k8kd
+121 v1.0.0 backend-v1-7f685b6f48-lfsrr
+122 v1.0.0 backend-v1-7f685b6f48-8k8kd
+123 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+124 v1.0.0 backend-v1-7f685b6f48-lfsrr
+125 v1.0.0 backend-v1-7f685b6f48-lfsrr
+126 v1.0.0 backend-v1-7f685b6f48-lfsrr
+127 v1.0.0 backend-v1-7f685b6f48-lfsrr
+128 v1.0.0 backend-v1-7f685b6f48-lfsrr
+129 v1.0.0 backend-v1-7f685b6f48-8k8kd
+130 v1.0.0 backend-v1-7f685b6f48-8k8kd
+131 v1.0.0 backend-v1-7f685b6f48-8k8kd
+132 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+133 v1.0.0 backend-v1-7f685b6f48-lfsrr
+134 v1.0.0 backend-v1-7f685b6f48-lfsrr
+135 v1.0.0 backend-v1-7f685b6f48-8k8kd
+136 v1.0.0 backend-v1-7f685b6f48-8k8kd
+137 v1.0.0 backend-v1-7f685b6f48-8k8kd
+138 v1.0.0 backend-v1-7f685b6f48-8k8kd
+139 v1.0.0 backend-v1-7f685b6f48-lfsrr
+140 v1.0.0 backend-v1-7f685b6f48-8k8kd
+141 v1.0.0 backend-v1-7f685b6f48-8k8kd
+142 v1.0.0 backend-v1-7f685b6f48-lfsrr
+143 v1.0.0 backend-v1-7f685b6f48-8k8kd
+144 v1.0.0 backend-v1-7f685b6f48-8k8kd
+145 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+146 v1.0.0 backend-v1-7f685b6f48-lfsrr
+147 v1.0.0 backend-v1-7f685b6f48-lfsrr
+148 v1.0.0 backend-v1-7f685b6f48-lfsrr
+149 v1.0.0 backend-v1-7f685b6f48-8k8kd
+150 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+151 v1.0.0 backend-v1-7f685b6f48-lfsrr
+152 v1.0.0 backend-v1-7f685b6f48-lfsrr
+153 v1.0.0 backend-v1-7f685b6f48-8k8kd
+154 v1.0.0 backend-v1-7f685b6f48-lfsrr
+155 v1.0.0 backend-v1-7f685b6f48-lfsrr
+156 v1.0.0 backend-v1-7f685b6f48-lfsrr
+157 v1.0.0 backend-v1-7f685b6f48-lfsrr
+158 v1.0.0 backend-v1-7f685b6f48-lfsrr
+159 v1.0.0 backend-v1-7f685b6f48-lfsrr
+160 v1.0.0 backend-v1-7f685b6f48-lfsrr
+161 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+162 v1.0.0 backend-v1-7f685b6f48-8k8kd
+163 v1.0.0 backend-v1-7f685b6f48-8k8kd
+164 v1.0.0 backend-v1-7f685b6f48-8k8kd
+165 v1.0.0 backend-v1-7f685b6f48-8k8kd
+166 v1.0.0 backend-v1-7f685b6f48-lfsrr
+167 v1.0.0 backend-v1-7f685b6f48-8k8kd
+168 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+169 v1.0.0 backend-v1-7f685b6f48-8k8kd
+170 v1.0.0 backend-v1-7f685b6f48-8k8kd
+171 v1.0.0 backend-v1-7f685b6f48-8k8kd
+172 v1.0.0 backend-v1-7f685b6f48-lfsrr
+173 v1.0.0 backend-v1-7f685b6f48-lfsrr
+174 v1.0.0 backend-v1-7f685b6f48-8k8kd
+175 v1.0.0 backend-v1-7f685b6f48-8k8kd
+176 v1.0.0 backend-v1-7f685b6f48-lfsrr
+177 v1.0.0 backend-v1-7f685b6f48-lfsrr
+178 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+179 v1.0.0 backend-v1-7f685b6f48-8k8kd
+180 v1.0.0 backend-v1-7f685b6f48-lfsrr
+181 v1.0.0 backend-v1-7f685b6f48-8k8kd
+182 v1.0.0 backend-v1-7f685b6f48-8k8kd
+183 v1.0.0 backend-v1-7f685b6f48-8k8kd
+184 v1.0.0 backend-v1-7f685b6f48-8k8kd
+185 v1.0.0 backend-v1-7f685b6f48-lfsrr
+186 v1.0.0 backend-v1-7f685b6f48-lfsrr
+187 v1.0.0 backend-v1-7f685b6f48-lfsrr
+188 v1.0.0 backend-v1-7f685b6f48-8k8kd
+189 v1.0.0 backend-v1-7f685b6f48-lfsrr
+190 v1.0.0 backend-v1-7f685b6f48-8k8kd
+191 v1.0.0 backend-v1-7f685b6f48-lfsrr
+192 v1.0.0 backend-v1-7f685b6f48-8k8kd
+193 v1.0.0 backend-v1-7f685b6f48-lfsrr
+194 v1.0.0 backend-v1-7f685b6f48-8k8kd
+195 v1.0.0 backend-v1-7f685b6f48-lfsrr
+196 v1.0.0 backend-v1-7f685b6f48-lfsrr
+197 v1.0.0 backend-v1-7f685b6f48-lfsrr
+198 v1.0.0 backend-v1-7f685b6f48-lfsrr
+199 v1.0.0 backend-v1-7f685b6f48-lfsrr
+200 v1.0.0 backend-v1-7f685b6f48-8k8kd
+# result:
+# v1.0.0    181 of 200 (90.5%)
+# v2.0.0     19 of 200 (9.5%)
+
+# 2026-11-24 15:58:38 200 requests to http://localhost:8889/version (Gateway palette-gateway, HTTPRoute palette-split)
+# weights: backend-v1=90 backend-v2=10
+  1 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+  2 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+  3 v1.0.0 backend-v1-7f685b6f48-lfsrr
+  4 v1.0.0 backend-v1-7f685b6f48-8k8kd
+  5 v1.0.0 backend-v1-7f685b6f48-8k8kd
+  6 v1.0.0 backend-v1-7f685b6f48-8k8kd
+  7 v1.0.0 backend-v1-7f685b6f48-lfsrr
+  8 v1.0.0 backend-v1-7f685b6f48-8k8kd
+  9 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 10 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 11 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 12 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 13 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 14 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 15 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 16 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 17 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 18 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 19 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 20 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 21 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 22 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 23 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 24 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 25 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 26 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 27 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 28 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 29 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 30 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+ 31 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 32 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 33 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 34 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 35 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+ 36 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 37 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+ 38 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 39 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 40 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 41 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 42 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 43 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 44 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 45 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 46 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 47 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 48 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 49 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 50 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 51 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 52 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 53 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+ 54 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 55 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 56 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 57 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 58 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 59 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 60 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 61 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 62 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 63 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 64 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 65 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 66 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 67 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 68 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 69 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 70 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 71 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 72 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 73 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 74 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 75 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 76 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 77 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 78 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 79 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 80 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 81 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 82 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 83 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 84 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 85 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 86 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 87 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 88 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 89 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 90 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 91 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 92 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 93 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 94 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 95 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 96 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 97 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 98 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 99 v1.0.0 backend-v1-7f685b6f48-lfsrr
+100 v1.0.0 backend-v1-7f685b6f48-8k8kd
+101 v1.0.0 backend-v1-7f685b6f48-lfsrr
+102 v1.0.0 backend-v1-7f685b6f48-8k8kd
+103 v1.0.0 backend-v1-7f685b6f48-8k8kd
+104 v1.0.0 backend-v1-7f685b6f48-8k8kd
+105 v1.0.0 backend-v1-7f685b6f48-lfsrr
+106 v1.0.0 backend-v1-7f685b6f48-8k8kd
+107 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+108 v1.0.0 backend-v1-7f685b6f48-8k8kd
+109 v1.0.0 backend-v1-7f685b6f48-lfsrr
+110 v1.0.0 backend-v1-7f685b6f48-8k8kd
+111 v1.0.0 backend-v1-7f685b6f48-lfsrr
+112 v1.0.0 backend-v1-7f685b6f48-8k8kd
+113 v1.0.0 backend-v1-7f685b6f48-8k8kd
+114 v1.0.0 backend-v1-7f685b6f48-lfsrr
+115 v1.0.0 backend-v1-7f685b6f48-8k8kd
+116 v1.0.0 backend-v1-7f685b6f48-8k8kd
+117 v1.0.0 backend-v1-7f685b6f48-lfsrr
+118 v1.0.0 backend-v1-7f685b6f48-lfsrr
+119 v1.0.0 backend-v1-7f685b6f48-8k8kd
+120 v1.0.0 backend-v1-7f685b6f48-lfsrr
+121 v1.0.0 backend-v1-7f685b6f48-lfsrr
+122 v1.0.0 backend-v1-7f685b6f48-8k8kd
+123 v1.0.0 backend-v1-7f685b6f48-8k8kd
+124 v1.0.0 backend-v1-7f685b6f48-lfsrr
+125 v1.0.0 backend-v1-7f685b6f48-lfsrr
+126 v1.0.0 backend-v1-7f685b6f48-lfsrr
+127 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+128 v1.0.0 backend-v1-7f685b6f48-lfsrr
+129 v1.0.0 backend-v1-7f685b6f48-lfsrr
+130 v1.0.0 backend-v1-7f685b6f48-8k8kd
+131 v1.0.0 backend-v1-7f685b6f48-lfsrr
+132 v1.0.0 backend-v1-7f685b6f48-lfsrr
+133 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+134 v1.0.0 backend-v1-7f685b6f48-8k8kd
+135 v1.0.0 backend-v1-7f685b6f48-8k8kd
+136 v1.0.0 backend-v1-7f685b6f48-8k8kd
+137 v1.0.0 backend-v1-7f685b6f48-8k8kd
+138 v1.0.0 backend-v1-7f685b6f48-lfsrr
+139 v1.0.0 backend-v1-7f685b6f48-8k8kd
+140 v1.0.0 backend-v1-7f685b6f48-8k8kd
+141 v1.0.0 backend-v1-7f685b6f48-lfsrr
+142 v1.0.0 backend-v1-7f685b6f48-lfsrr
+143 v1.0.0 backend-v1-7f685b6f48-8k8kd
+144 v1.0.0 backend-v1-7f685b6f48-lfsrr
+145 v1.0.0 backend-v1-7f685b6f48-lfsrr
+146 v1.0.0 backend-v1-7f685b6f48-8k8kd
+147 v1.0.0 backend-v1-7f685b6f48-8k8kd
+148 v1.0.0 backend-v1-7f685b6f48-lfsrr
+149 v1.0.0 backend-v1-7f685b6f48-lfsrr
+150 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+151 v1.0.0 backend-v1-7f685b6f48-8k8kd
+152 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+153 v1.0.0 backend-v1-7f685b6f48-lfsrr
+154 v1.0.0 backend-v1-7f685b6f48-8k8kd
+155 v1.0.0 backend-v1-7f685b6f48-8k8kd
+156 v1.0.0 backend-v1-7f685b6f48-lfsrr
+157 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+158 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+159 v1.0.0 backend-v1-7f685b6f48-lfsrr
+160 v1.0.0 backend-v1-7f685b6f48-lfsrr
+161 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+162 v1.0.0 backend-v1-7f685b6f48-lfsrr
+163 v1.0.0 backend-v1-7f685b6f48-8k8kd
+164 v1.0.0 backend-v1-7f685b6f48-lfsrr
+165 v1.0.0 backend-v1-7f685b6f48-lfsrr
+166 v1.0.0 backend-v1-7f685b6f48-8k8kd
+167 v1.0.0 backend-v1-7f685b6f48-lfsrr
+168 v1.0.0 backend-v1-7f685b6f48-8k8kd
+169 v1.0.0 backend-v1-7f685b6f48-lfsrr
+170 v1.0.0 backend-v1-7f685b6f48-lfsrr
+171 v1.0.0 backend-v1-7f685b6f48-lfsrr
+172 v1.0.0 backend-v1-7f685b6f48-lfsrr
+173 v1.0.0 backend-v1-7f685b6f48-8k8kd
+174 v1.0.0 backend-v1-7f685b6f48-8k8kd
+175 v1.0.0 backend-v1-7f685b6f48-lfsrr
+176 v1.0.0 backend-v1-7f685b6f48-lfsrr
+177 v1.0.0 backend-v1-7f685b6f48-8k8kd
+178 v1.0.0 backend-v1-7f685b6f48-8k8kd
+179 v1.0.0 backend-v1-7f685b6f48-lfsrr
+180 v1.0.0 backend-v1-7f685b6f48-lfsrr
+181 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+182 v1.0.0 backend-v1-7f685b6f48-lfsrr
+183 v1.0.0 backend-v1-7f685b6f48-8k8kd
+184 v1.0.0 backend-v1-7f685b6f48-lfsrr
+185 v1.0.0 backend-v1-7f685b6f48-lfsrr
+186 v1.0.0 backend-v1-7f685b6f48-8k8kd
+187 v1.0.0 backend-v1-7f685b6f48-lfsrr
+188 v1.0.0 backend-v1-7f685b6f48-8k8kd
+189 v1.0.0 backend-v1-7f685b6f48-8k8kd
+190 v1.0.0 backend-v1-7f685b6f48-lfsrr
+191 v1.0.0 backend-v1-7f685b6f48-lfsrr
+192 v1.0.0 backend-v1-7f685b6f48-8k8kd
+193 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+194 v1.0.0 backend-v1-7f685b6f48-8k8kd
+195 v1.0.0 backend-v1-7f685b6f48-lfsrr
+196 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+197 v1.0.0 backend-v1-7f685b6f48-8k8kd
+198 v1.0.0 backend-v1-7f685b6f48-lfsrr
+199 v1.0.0 backend-v1-7f685b6f48-lfsrr
+200 v1.0.0 backend-v1-7f685b6f48-lfsrr
+# result:
+# v1.0.0    177 of 200 (88.5%)
+# v2.0.0     23 of 200 (11.5%)
+
+# 2026-11-24 15:58:45 200 requests to http://localhost:8889/version (Gateway palette-gateway, HTTPRoute palette-split)
+# weights: backend-v1=90 backend-v2=10
+  1 v1.0.0 backend-v1-7f685b6f48-8k8kd
+  2 v1.0.0 backend-v1-7f685b6f48-8k8kd
+  3 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+  4 v1.0.0 backend-v1-7f685b6f48-8k8kd
+  5 v1.0.0 backend-v1-7f685b6f48-8k8kd
+  6 v1.0.0 backend-v1-7f685b6f48-8k8kd
+  7 v1.0.0 backend-v1-7f685b6f48-lfsrr
+  8 v1.0.0 backend-v1-7f685b6f48-8k8kd
+  9 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 10 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 11 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 12 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 13 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 14 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 15 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 16 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 17 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 18 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 19 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 20 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 21 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 22 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 23 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 24 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 25 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 26 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 27 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 28 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 29 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 30 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 31 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 32 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 33 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 34 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 35 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 36 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 37 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+ 38 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 39 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 40 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 41 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 42 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 43 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 44 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 45 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 46 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 47 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 48 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 49 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 50 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 51 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 52 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 53 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 54 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 55 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 56 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 57 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 58 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 59 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 60 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 61 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 62 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 63 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 64 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 65 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+ 66 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 67 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 68 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 69 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 70 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 71 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 72 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 73 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 74 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 75 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 76 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 77 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 78 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 79 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 80 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 81 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 82 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 83 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 84 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 85 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 86 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 87 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+ 88 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 89 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 90 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 91 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 92 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 93 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 94 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 95 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 96 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 97 v1.0.0 backend-v1-7f685b6f48-8k8kd
+ 98 v1.0.0 backend-v1-7f685b6f48-lfsrr
+ 99 v1.0.0 backend-v1-7f685b6f48-lfsrr
+100 v1.0.0 backend-v1-7f685b6f48-lfsrr
+101 v1.0.0 backend-v1-7f685b6f48-lfsrr
+102 v1.0.0 backend-v1-7f685b6f48-lfsrr
+103 v1.0.0 backend-v1-7f685b6f48-8k8kd
+104 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+105 v1.0.0 backend-v1-7f685b6f48-8k8kd
+106 v1.0.0 backend-v1-7f685b6f48-lfsrr
+107 v1.0.0 backend-v1-7f685b6f48-8k8kd
+108 v1.0.0 backend-v1-7f685b6f48-lfsrr
+109 v1.0.0 backend-v1-7f685b6f48-8k8kd
+110 v1.0.0 backend-v1-7f685b6f48-lfsrr
+111 v1.0.0 backend-v1-7f685b6f48-8k8kd
+112 v1.0.0 backend-v1-7f685b6f48-8k8kd
+113 v1.0.0 backend-v1-7f685b6f48-lfsrr
+114 v1.0.0 backend-v1-7f685b6f48-8k8kd
+115 v1.0.0 backend-v1-7f685b6f48-8k8kd
+116 v1.0.0 backend-v1-7f685b6f48-8k8kd
+117 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+118 v1.0.0 backend-v1-7f685b6f48-8k8kd
+119 v1.0.0 backend-v1-7f685b6f48-8k8kd
+120 v1.0.0 backend-v1-7f685b6f48-8k8kd
+121 v1.0.0 backend-v1-7f685b6f48-lfsrr
+122 v1.0.0 backend-v1-7f685b6f48-lfsrr
+123 v1.0.0 backend-v1-7f685b6f48-lfsrr
+124 v1.0.0 backend-v1-7f685b6f48-8k8kd
+125 v1.0.0 backend-v1-7f685b6f48-8k8kd
+126 v1.0.0 backend-v1-7f685b6f48-lfsrr
+127 v1.0.0 backend-v1-7f685b6f48-lfsrr
+128 v1.0.0 backend-v1-7f685b6f48-lfsrr
+129 v1.0.0 backend-v1-7f685b6f48-8k8kd
+130 v1.0.0 backend-v1-7f685b6f48-8k8kd
+131 v1.0.0 backend-v1-7f685b6f48-8k8kd
+132 v1.0.0 backend-v1-7f685b6f48-lfsrr
+133 v1.0.0 backend-v1-7f685b6f48-lfsrr
+134 v1.0.0 backend-v1-7f685b6f48-lfsrr
+135 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+136 v1.0.0 backend-v1-7f685b6f48-lfsrr
+137 v1.0.0 backend-v1-7f685b6f48-lfsrr
+138 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+139 v1.0.0 backend-v1-7f685b6f48-8k8kd
+140 v1.0.0 backend-v1-7f685b6f48-8k8kd
+141 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+142 v1.0.0 backend-v1-7f685b6f48-8k8kd
+143 v1.0.0 backend-v1-7f685b6f48-8k8kd
+144 v1.0.0 backend-v1-7f685b6f48-8k8kd
+145 v1.0.0 backend-v1-7f685b6f48-lfsrr
+146 v1.0.0 backend-v1-7f685b6f48-8k8kd
+147 v1.0.0 backend-v1-7f685b6f48-8k8kd
+148 v1.0.0 backend-v1-7f685b6f48-lfsrr
+149 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+150 v1.0.0 backend-v1-7f685b6f48-8k8kd
+151 v1.0.0 backend-v1-7f685b6f48-8k8kd
+152 v1.0.0 backend-v1-7f685b6f48-8k8kd
+153 v1.0.0 backend-v1-7f685b6f48-8k8kd
+154 v1.0.0 backend-v1-7f685b6f48-8k8kd
+155 v1.0.0 backend-v1-7f685b6f48-8k8kd
+156 v1.0.0 backend-v1-7f685b6f48-8k8kd
+157 v1.0.0 backend-v1-7f685b6f48-lfsrr
+158 v1.0.0 backend-v1-7f685b6f48-8k8kd
+159 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+160 v1.0.0 backend-v1-7f685b6f48-lfsrr
+161 v1.0.0 backend-v1-7f685b6f48-lfsrr
+162 v1.0.0 backend-v1-7f685b6f48-8k8kd
+163 v1.0.0 backend-v1-7f685b6f48-8k8kd
+164 v1.0.0 backend-v1-7f685b6f48-8k8kd
+165 v1.0.0 backend-v1-7f685b6f48-lfsrr
+166 v1.0.0 backend-v1-7f685b6f48-8k8kd
+167 v1.0.0 backend-v1-7f685b6f48-8k8kd
+168 v1.0.0 backend-v1-7f685b6f48-8k8kd
+169 v1.0.0 backend-v1-7f685b6f48-8k8kd
+170 v1.0.0 backend-v1-7f685b6f48-8k8kd
+171 v1.0.0 backend-v1-7f685b6f48-lfsrr
+172 v1.0.0 backend-v1-7f685b6f48-8k8kd
+173 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+174 v1.0.0 backend-v1-7f685b6f48-8k8kd
+175 v1.0.0 backend-v1-7f685b6f48-8k8kd
+176 v1.0.0 backend-v1-7f685b6f48-lfsrr
+177 v1.0.0 backend-v1-7f685b6f48-8k8kd
+178 v2.0.0 backend-v2-58cb66c4d8-2fjsk
+179 v1.0.0 backend-v1-7f685b6f48-lfsrr
+180 v1.0.0 backend-v1-7f685b6f48-lfsrr
+181 v1.0.0 backend-v1-7f685b6f48-lfsrr
+182 v1.0.0 backend-v1-7f685b6f48-8k8kd
+183 v1.0.0 backend-v1-7f685b6f48-lfsrr
+184 v1.0.0 backend-v1-7f685b6f48-lfsrr
+185 v1.0.0 backend-v1-7f685b6f48-8k8kd
+186 v1.0.0 backend-v1-7f685b6f48-lfsrr
+187 v1.0.0 backend-v1-7f685b6f48-lfsrr
+188 v1.0.0 backend-v1-7f685b6f48-8k8kd
+189 v1.0.0 backend-v1-7f685b6f48-8k8kd
+190 v1.0.0 backend-v1-7f685b6f48-lfsrr
+191 v2.0.0 backend-v2-58cb66c4d8-w8p6j
+192 v1.0.0 backend-v1-7f685b6f48-8k8kd
+193 v1.0.0 backend-v1-7f685b6f48-lfsrr
+194 v1.0.0 backend-v1-7f685b6f48-lfsrr
+195 v1.0.0 backend-v1-7f685b6f48-8k8kd
+196 v1.0.0 backend-v1-7f685b6f48-8k8kd
+197 v1.0.0 backend-v1-7f685b6f48-lfsrr
+198 v1.0.0 backend-v1-7f685b6f48-8k8kd
+199 v1.0.0 backend-v1-7f685b6f48-8k8kd
+200 v1.0.0 backend-v1-7f685b6f48-8k8kd
+# result:
+# v1.0.0    181 of 200 (90.5%)
+# v2.0.0     19 of 200 (9.5%)
+
