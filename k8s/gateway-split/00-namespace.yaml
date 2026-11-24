@@ -1,0 +1,27 @@
+# Namespace of the traffic split homework, with the backend configuration.
+# The backends use the PostgreSQL of the main application (namespace default).
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gateway-split
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: palette-config
+  namespace: gateway-split
+data:
+  ENV: "production"
+  PORT: "8000"
+  CORS_ORIGINS: "http://localhost:5173"
+---
+# Demo credentials, the same as in k8s/00-config.yaml.
+apiVersion: v1
+kind: Secret
+metadata:
+  name: palette-secret
+  namespace: gateway-split
+type: Opaque
+stringData:
+  DATABASE_URL: "postgresql://palette_user:palette_pass@db.default.svc.cluster.local:5432/palette_db"
+  JWT_SECRET: "k8s-demo-secret-change-me"

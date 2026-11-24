@@ -1,0 +1,77 @@
+# Backend v1.0.0: 2 replicas of the palette backend. Both versions use the same
+# image palette-backend:1.1 and differ only in APP_VERSION (returned by GET /version).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-v1
+  namespace: gateway-split
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: palette-backend
+      version: v1.0.0
+  template:
+    metadata:
+      labels:
+        app: palette-backend
+        version: v1.0.0
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9100"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+        - name: backend
+          image: palette-backend:1.1
+          imagePullPolicy: Never   # built locally and loaded with `minikube image load`
+          ports:
+            - name: http
+              containerPort: 8000
+            - name: metrics
+              containerPort: 9100
+          envFrom:
+            - configMapRef: {name: palette-config}
+            - secretRef: {name: palette-secret}
+          env:
+            # The only difference between releases: returned by GET /version,
+            # in the X-App-Version header, in logs and in palette_build_info.
+            - name: APP_VERSION
+              value: v1.0.0
+          # Readiness: the pod gets traffic only when the database is reachable.
+          readinessProbe:
+            httpGet: {path: /ready, port: http}
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          # Liveness: the process answers HTTP (does not depend on the database).
+          livenessProbe:
+            httpGet: {path: /live, port: http}
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          # Graceful shutdown: keep serving for 5 s after the pod is marked
+          # Terminating, while Envoy removes it from the endpoints. Without
+          # this a request can reach a pod that is already shutting down (503).
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sleep", "5"]
+          resources:
+            requests: {cpu: 25m, memory: 64Mi}
+            limits: {memory: 256Mi}
+---
+# ClusterIP Service of version v1: reachable only inside the cluster, the
+# Gateway sends traffic to it by name.
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-v1
+  namespace: gateway-split
+spec:
+  type: ClusterIP
+  selector:
+    app: palette-backend
+    version: v1.0.0
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
